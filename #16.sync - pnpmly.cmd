@@ -1,1 +1,0 @@
-start cmd /k "pnpm install ./ttsplugin & pnpm cap sync"
