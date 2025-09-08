@@ -3,7 +3,6 @@
   functions = "netlify/functions"
 
 [dev]
-  framework = "vite" # or "angular" if you want to hook into Netlify dev
   port = 8888
 
 [[redirects]]
