@@ -1,7 +1,7 @@
 {
 	"version": 2,
-  "framework": "angular",
-  "buildCommand": "npm run build",
+  "framework": "ionic",
+  "buildCommand": "pnpm run build",
   "outputDirectory": "www",
   "routes": [
     { 
