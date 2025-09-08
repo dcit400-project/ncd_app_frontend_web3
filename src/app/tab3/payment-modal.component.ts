@@ -29,8 +29,9 @@ export interface PaystackPlugin {
 }
 
 
-const API_URL = "http://192.168.255.194:5000/api";
-
+const API_URL = "https://ncdttspaystack.netlify.app/api";
+private host = "https://ncdttspaystack.netlify.app/api";
+	
 
 
 @Component({
@@ -153,8 +154,8 @@ export class PaymentModalComponent {
 	  
 	  //--------------------------Use API---------------	  
 		/*  */
-		  private host = "http://192.168.255.194:5000/api";
-
+		  //private host = "http://192.168.255.194:5000/api";
+		
 		  async payAPI(email: string, amount: number, userId: string) {
 			  this.initializePayment(this.email, this.amount).subscribe({
 				next: async (res) => {
