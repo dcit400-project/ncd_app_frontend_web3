@@ -30,7 +30,7 @@ export interface PaystackPlugin {
 
 
 const API_URL = "https://ncdttspaystack.netlify.app/api";
-host = "https://ncdttspaystack.netlify.app/api";
+//host = "https://ncdttspaystack.netlify.app/api";
 	
 
 
