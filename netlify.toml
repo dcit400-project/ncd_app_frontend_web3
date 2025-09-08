@@ -1,6 +1,6 @@
 [build]
   command = "npm run build"
-  publish = "www" # your Ionic/Angular build output folder
+  publish = "." # your Ionic/Angular build output folder
   functions = "netlify/functions"
 
 [dev]
