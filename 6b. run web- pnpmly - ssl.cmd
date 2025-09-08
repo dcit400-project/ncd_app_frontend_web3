@@ -1,0 +1,1 @@
+start cmd /k "pnpm run build & pnpm ionic serve --ssl --ssl-key ./certs/key.pem --ssl-cert ./certs/cert.pem --external"

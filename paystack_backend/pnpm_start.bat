@@ -1,0 +1,1 @@
+start cmd /k "pnpm nodemon paystack_backend/server.js"

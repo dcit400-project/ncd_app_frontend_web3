@@ -1,0 +1,36 @@
+@import "@ionic/angular/css/core.css";
+
+@import "@ionic/angular/css/normalize.css";/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+@import "@ionic/angular/css/padding.css";/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+@import "@ionic/angular/css/palettes/dark.system.css";
+
+body.dark {
+    /* 🌙 Dark Mode: Deep Slate UI */
+    --ion-background-color: #1e1e2f; --ion-text-color: #f1f1f1; --ion-color-primary: #4dd0e1; /* Aqua Cyan */
+    --ion-color-primary-shade: #26b6c5; --ion-color-primary-tint: #6ee5f3; --ion-color-primary-contrast: #000000 ;  
+    --ion-color-step-50: #2a2a3d; --ion-color-step-100: #33334a; --ion-color-step-150: #3c3c57 ;    --ion-color-step-200: #444464; --ion-color-step-250: #4d4d70;--ion-color-step-300: #55557d ;    --ion-color-step-350: #5e5e8a; --ion-color-step-400: #676797; --ion-color-step-450: #7070a4 ;    --ion-color-step-500: #7a7ab1 ;  
+    --ion-card-background: rgba(40, 40, 60, 0.9); --ion-item-background: rgba(50, 50, 70, 0.85) ;  
+    --ion-toolbar-background: rgba(30, 30, 50, 0.95); --ion-tab-bar-background: rgba(30, 30, 50, 0.95) ;    --dashboard-reflection-color: rgba(var(--ion-color-primary-rgb), 0.14) ;    backdrop-filter: blur(10px) brightness(90%); -webkit-backdrop-filter: blur(10px) brightness(90%); box-shadow: 0 0 8px rgba(0, 0, 0, 0.6) ;    --custom-icon-color: var(--ion-color-primary) ;    --section-title-background: var(--ion-color-step-50) ;    --section-title-color: var(--ion-text-color); // or var(--ion-color-dark)
+  }
+  
+  
+  body {
+    /* 🌤️ Light Mode: Fresh Blue Gradient UI */
+    --ion-background-color: linear-gradient(to bottom right, #e0f7ff, #f4faff); --ion-text-color: #003366 ;  
+    --ion-color-primary: #3abefb; /* Soft sky blue */ --ion-color-primary-shade: #2a9cd9; --ion-color-primary-tint: #61d4fd ;    --ion-color-primary-contrast: #ffffff ;  
+    --ion-color-step-50: #f0f9ff; --ion-color-step-100: #dff2ff; --ion-color-step-150: #c8e8f8; --ion-color-step-200: #b0def0 ;    --ion-color-step-250: #97d5eb; --ion-color-step-300: #7dcce5; --ion-color-step-350: #63c3e0 ;    --ion-color-step-400: #4abada; --ion-color-step-450: #31b1d4; --ion-color-step-500: #1aa8cf ;  
+    --ion-card-background: rgba(255, 255, 255, 0.8); --ion-item-background: rgba(255, 255, 255, 0.7) ;  
+    --ion-toolbar-background: rgba(255, 255, 255, 0.6); --ion-tab-bar-background: rgba(255, 255, 255, 0.45) ;    --dashboard-reflection-color: rgba(255, 255, 255, 0.7) ;    /* Glass reflection & softness */
+    backdrop-filter: blur(12px) saturate(160%); -webkit-backdrop-filter: blur(12px) saturate(160%) ;    box-shadow: 0 0 8px rgba(58, 190, 251, 0.15) ;    --custom-icon-color: var(--ion-color-step-250);
+
+    --custom-button-radius: 12px ;    --section-title-background: var(--ion-color-primary) ;    --section-title-color: var(--ion-text-color); // or var(--ion-color-dark)
+  }
+  

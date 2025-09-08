@@ -1,0 +1,77 @@
+//-------------------
+.voice-col { text-align: center;}
+.center-icon { font-size: 24px; /* Adjust icon size if needed */ margin: 0 auto; }
+//------------
+ion-skeleton-text { border-radius: 6px;
+background: linear-gradient( 100deg, var(--ion-color-step-100) 30%, var(--ion-color-step-200) 50%, var(--ion-color-step-100) 70% );
+}
+//---------------------------------------------------
+.dashboard-image {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+
+  img {
+    width: 100%;
+    max-width: 300px; /* keeps it from getting too big */
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+}
+.dashboard-grid {
+  ion-col {
+    display: flex;
+    justify-content: center;
+  }
+}
+.dashboard-card {
+  /* Use global card background for light/dark themes */
+  --background: var(--ion-card-background);
+  background: transparent;
+  border-radius: 16px;
+  padding: 1rem;
+  width: 100%;
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden; /* keep reflection inside */
+
+  /* Reflection Shine */
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      transparent 20%,
+      rgba(var(--ion-color-step-150-rgb), 0.14) 50%, /* reflection color matches primary */
+      transparent 100%
+    );
+    transform: skewX(-25deg);
+    animation: reflectionSlide 5s ease-in-out infinite;
+    pointer-events: none; /* don't block clicks */
+  }
+}
+
+.dashboard-card2 {
+  --background: var(--ion-card-background);
+  background: transparent;
+  border-radius: 16px;
+  padding: 1rem;
+  width: 100%;
+  backdrop-filter: blur(12px) saturate(100%);
+  -webkit-backdrop-filter: blur(12px) saturate(100%);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.01);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden; /* keep reflection inside */
+
+ 
+}

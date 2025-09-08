@@ -1,0 +1,43 @@
+<!-- Animated SVG Icon for "Hypertension" Category -->
+<svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background glow -->
+  <circle cx="40" cy="40" r="30" fill="crimson" opacity="0.4">
+    <animate attributeName="opacity"
+             values="0.4;0.8;0.4"
+             dur="2s"
+             repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Heart shape -->
+  <path d="M40 58 
+           L20 38 
+           A10 10 0 0 1 40 28 
+           A10 10 0 0 1 60 38 
+           Z"
+        fill="crimson"
+        stroke="white"
+        stroke-width="2">
+    <!-- Pulse animation -->
+    <animateTransform attributeName="transform"
+                      type="scale"
+                      values="1;1.1;1"
+                      dur="1s"
+                      repeatCount="indefinite"
+                      additive="sum"
+                      begin="0s"
+                      />
+  </path>
+
+  <!-- Pulse line (like heartbeat on ECG) -->
+  <polyline points="10,40 25,40 30,30 35,50 40,40 45,35 50,45 55,40 70,40"
+            fill="none"
+            stroke="white"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round">
+    <animate attributeName="stroke-dasharray"
+             values="0,200;200,0"
+             dur="2s"
+             repeatCount="indefinite" />
+  </polyline>
+</svg>

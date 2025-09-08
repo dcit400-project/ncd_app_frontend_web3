@@ -1,0 +1,13 @@
+[
+    {
+      "id": 1,
+      "password": "1",
+      "role": "Doctor"
+    },
+    {
+      "id": 2,
+      "password": "w",
+      "role": "Patient"
+    }
+  ]
+  

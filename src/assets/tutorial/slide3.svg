@@ -1,0 +1,18 @@
+<svg width="100%" height="100%" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background circle -->
+    <circle cx="50" cy="50" r="45" fill="#EBF8FF"/>
+    <!-- Main icon: Gears representing processing/analysis -->
+    <circle cx="40" cy="40" r="15" fill="#4299E1"/>
+    <path d="M40 25L45 30L55 30L60 25L55 20L45 20L40 25Z" fill="#4299E1"/>
+    <path d="M40 55L45 60L55 60L60 55L55 50L45 50L40 55Z" fill="#4299E1"/>
+    <circle cx="60" cy="60" r="15" fill="#63B3ED"/>
+    <path d="M60 45L65 50L75 50L80 45L75 40L65 40L60 45Z" fill="#63B3ED"/>
+    <path d="M60 75L65 80L75 80L80 75L75 70L65 70L60 75Z" fill="#63B3ED"/>
+    <!-- Magnifying glass over data points -->
+    <circle cx="70" cy="30" r="10" stroke="#3182CE" stroke-width="3"/>
+    <line x1="77" y1="37" x2="85" y2="45" stroke="#3182CE" stroke-width="3" stroke-linecap="round"/>
+    <!-- Data points -->
+    <circle cx="65" cy="25" r="2" fill="#3182CE"/>
+    <circle cx="75" cy="35" r="2" fill="#3182CE"/>
+    <circle cx="70" cy="30" r="2" fill="#3182CE"/>
+</svg>

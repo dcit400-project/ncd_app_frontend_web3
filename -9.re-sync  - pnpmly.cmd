@@ -1,0 +1,1 @@
+start cmd /k "pnpm cap sync android & pnpm cap open android"

@@ -1,0 +1,67 @@
+
+  .sparkline {
+    width: 100%;
+    height: 30px;
+  }
+  
+  .sparkline svg {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .sparkline polyline {
+    fill: none;
+    stroke: var(--ion-color-primary);
+    stroke-width: 2;
+  }
+  
+  .chart-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr; /* Pie chart wider */
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .chart-left {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    justify-content: center;
+  }
+  
+  .chart-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* ===== Pie Chart ===== */
+  .pie-chart {
+    width: 140px; /* bigger */
+    height: 140px;
+    position: relative;
+  }
+  .pie-chart svg {
+    transform: rotate(-90deg);
+    width: 100%;
+    height: 100%;
+  }
+  .pie-chart .bg {
+    fill: none;
+    stroke: var(--ion-color-step-200);
+    stroke-width: 3;
+  }
+  .pie-chart .fg {
+    fill: none;
+    stroke: var(--ion-color-primary);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-dasharray: 65, 100;
+    animation: spinPie 3s linear infinite;
+  }
+  @keyframes spinPie {
+    0%   { stroke-dasharray: 0, 100; }
+    50%  { stroke-dasharray: 65, 100; }
+    100% { stroke-dasharray: 0, 100; }
+  }
+  

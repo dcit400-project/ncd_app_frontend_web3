@@ -1,0 +1,1 @@
+start cmd /k "pnpm run build & pnpm ionic serve --external"

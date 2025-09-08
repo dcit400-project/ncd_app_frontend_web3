@@ -1,0 +1,201 @@
+
+gimme dummy 7 patirnnes and 2 doctores. and fill the pactients records with dummy data there.   CODE:  
+
+// src/app/seed-data.ts
+import { SQLiteService } from './auth.service';
+
+export async function seedDatabase(sqliteService: SQLiteService) {
+  console.log('🌱 Checking if dummy data needs to be seeded...');
+
+  await sqliteService.init();
+
+  const users = await sqliteService.getAllUsers();
+  if (users.length === 0) {
+    console.log('🌱 Adding dummy users...');
+    await sqliteService.addUser('125151', 'pass123', 'doctor', 1);
+    await sqliteService.addUser('5454', 'pass123', 'nurse', 1);
+    await sqliteService.addUser('245452', 'pass123', 'patient', 1);
+  }
+
+  const result = await sqliteService.db.query(`SELECT COUNT(*) as count FROM patient_records`);
+  const patientCount = await sqliteService.getPatientCount();
+  if (patientCount < 3) {
+    console.log('🌱 Adding dummy patient records...');
+    for (let i = 1; i <= 5; i++) {
+      await sqliteService.addPatientRecord({
+        
+        userId: '125151',
+        condition: ['Hypertension', 'Diabetes', 'Asthma'][i % 3],
+        risk: Math.random(),
+		date: new Date().toISOString().split('T')[0],
+        formData: {
+          name: `Patient ${i}`,
+          age: 30 + i,
+          notes: 'This is a dummy patient record for testing'
+        }
+      });
+    }
+  }
+
+  console.log('✅ Seeding complete');
+}
+
+
+these are the formData formaths
+
+hyper tension: [5 rows x 16 columns]
+id                 0
+age                0
+education          0
+sex                0
+is_smoking         0
+cigsPerDay         0
+BPMeds             0
+prevalentStroke    0
+prevalentHyp       0
+diabetes           0
+totChol            0
+sysBP              0
+diaBP              0
+BMI                0
+heartRate          0
+glucose            0
+dtype: int64
+
+
+Arthritis: 
+General_Health                  0
+Checkup                         0
+Exercise                        0
+Heart_Disease                   0
+Skin_Cancer                     0
+Other_Cancer                    0
+Depression                      0
+Diabetes                        0
+Arthritis                       0
+Sex                             0
+Age_Category                    0
+Height_(cm)                     0
+Weight_(kg)                     0
+BMI                             0
+Smoking_History                 0
+Alcohol_Consumption             0
+Fruit_Consumption               0
+Green_Vegetables_Consumption    0
+FriedPotato_Consumption         0
+
+
+lung cancer: 
+index                       0
+Patient Id                  0
+Age                         0
+Gender                      0
+Air Pollution               0
+Alcohol use                 0
+Dust Allergy                0
+OccuPational Hazards        0
+Genetic Risk                0
+chronic Lung Disease        0
+Balanced Diet               0
+Obesity                     0
+Smoking                     0
+Passive Smoker              0
+Chest Pain                  0
+Coughing of Blood           0
+Fatigue                     0
+Weight Loss                 0
+Shortness of Breath         0
+Wheezing                    0
+Swallowing Difficulty       0
+Clubbing of Finger Nails    0
+Frequent Cold               0
+Dry Cough                   0
+Snoring                     0
+Level                       0
+
+
+
+Asthma:
+
+State                        0
+Sex                          0
+GeneralHealth                0
+PhysicalHealthDays           0
+MentalHealthDays             0
+LastCheckupTime              0
+PhysicalActivities           0
+SleepHours                   0
+RemovedTeeth                 0
+HadHeartAttack               0
+HadAngina                    0
+HadStroke                    0
+HadAsthma                    0
+HadSkinCancer                0
+HadCOPD                      0
+HadDepressiveDisorder        0
+HadKidneyDisease             0
+HadArthritis                 0
+HadDiabetes                  0
+DeafOrHardOfHearing          0
+BlindOrVisionDifficulty      0
+DifficultyConcentrating      0
+DifficultyWalking            0
+DifficultyDressingBathing    0
+DifficultyErrands            0
+SmokerStatus                 0
+ECigaretteUsage              0
+ChestScan                    0
+RaceEthnicityCategory        0
+AgeCategory                  0
+HeightInMeters               0
+WeightInKilograms            0
+BMI                          0
+AlcoholDrinkers              0
+HIVTesting                   0
+FluVaxLast12                 0
+PneumoVaxEver                0
+TetanusLast10Tdap            0
+HighRiskLastYear             0
+CovidPos                     0
+
+
+
+
+diabetes: gender                 0
+age                    0
+hypertension           0
+heart_disease          0
+smoking_history        0
+bmi                    0
+HbA1c_level            0
+blood_glucose_level    0
+diabetes               0
+dtype: int64
+smoking_history
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

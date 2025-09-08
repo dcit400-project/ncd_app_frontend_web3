@@ -1,0 +1,546 @@
+<ng-template #loadingSpinner>
+  <ion-spinner name="crescent"></ion-spinner>
+</ng-template>
+
+<ng-container *ngIf="userRole === 'Patient'">
+  
+  <!--
+  <ion-content class="intro-page"  >
+    <div class="intro-container">
+      <div *ngFor="let slide of slides; let i = index">
+        <div *ngIf="currentSlide === i">
+          <img [src]="slide.image" class="intro-img" />
+          <h2>{{ slide.title }}</h2>
+          <p>{{ slide.description }}</p>
+        </div>
+      </div>
+  
+      <div class="dot-container">
+        <div
+          *ngFor="let s of slides; let i = index"
+          class="dot"
+          [class.active]="i === currentSlide"
+        ></div>
+      </div>
+  
+      <ion-button expand="block" (click)="nextSlide()">
+        {{ currentSlide < slides.length - 1 ? 'Next' : 'Get Started' }}
+      </ion-button>
+    </div>
+  </ion-content>
+
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+<ion-split-pane contentId="main-content"  >
+
+  <!-- SIDEBAR MENU wirh diseadse list again
+  <ion-menu contentId="main-content" type="overlay" side="start">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>Select Disease</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item
+          *ngFor="let disease of diseases; let i = index"
+          (click)="selectDisease(i); closeMenu()"
+          [class.selected]="activeDisease === i">
+          {{ disease.name }}
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+-->
+
+<!-- SIDEBAR MENU with instructions -->
+<ion-menu contentId="main-content" type="overlay" side="start">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>User Profile</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <!-- 🔵 PROFILE SECTION -->
+    <div class="menu-profile-section">
+      <ion-avatar class="profile-avatar">
+        <ion-icon name="person-circle" size="large"></ion-icon>
+      </ion-avatar>
+      <h2>{{ username }}</h2>
+      <p>{{ userRole }}</p>
+     
+    </div>
+
+    <!-- 🔽 MENU ITEMS -->
+    <ion-list>
+      <!-- HOME BUTTON -->
+      <ion-item button (click)="closeMenu()" class="menu-option">
+        <ion-icon slot="start"></ion-icon>
+        <ion-label>Home</ion-label>
+      </ion-item>
+
+      <!-- SETTINGS DROPDOWN -->
+      <ion-item button (click)="toggleSettings()" class="menu-option">
+        <ion-icon name="settings" slot="start"></ion-icon>
+        <ion-label>Settings</ion-label>
+        <ion-icon
+          [name]="showSettings ? 'chevron-up' : 'chevron-down'"
+          slot="end"
+          class="chevron-icon"
+        ></ion-icon>
+      </ion-item>
+
+      <!-- SETTINGS TOGGLE OPTION (VISIBLE WHEN showSettings is true) -->
+      <div *ngIf="showSettings" class="submenu">
+        <ion-item class="submenu-option">
+          <ion-icon [name]="isDarkMode ? 'sunny' : 'moon'" slot="start"></ion-icon>
+          <ion-label>{{ isDarkMode ? 'Light Mode' : 'Dark Mode' }}</ion-label>
+          <ion-toggle
+            slot="end"
+            [checked]="isDarkMode"
+            (ionChange)="toggleTheme()"
+            color="primary"
+          ></ion-toggle>
+        </ion-item>
+      </div>
+	  
+	  <!-- COMMENTS BUTTON -->
+      <ion-item button (click)="commentsShow()" class="menu-option">
+        <ion-icon slot="start"></ion-icon>
+        <ion-label>Comments</ion-label>
+      </ion-item>
+
+      <!-- LOGOUT BUTTON -->
+      <ion-item button (click)="logout()" class="menu-option">
+        <ion-icon name="log-out-outline" slot="start"></ion-icon>
+        <ion-label>Logout</ion-label>
+      </ion-item>
+
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+  
+
+
+
+  
+
+  <!-- MAIN PAGE -->
+  <div class="ion-page" id="main-content">
+    <ion-header [translucent]="true">
+      <ion-toolbar class="toolbar">
+        
+        <!-- ☰ MENU BUTTON -->
+        <ion-buttons slot="start" >
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+
+        <ion-title><b>NCD Risk Watcher</b></ion-title>
+
+        <!-- 🌗 THEME TOGGLE -->
+        <ion-button fill="clear" (click)="toggleTheme()" slot="end">
+          <ion-icon [name]="isDarkMode ? 'sunny' : 'moon'" slot="icon-only"></ion-icon>
+        </ion-button>
+
+        <!-- 👤 PROFILE BUTTON -->
+        <ion-button fill="clear" slot="end" (click)="openPopover($event)">
+            <ion-icon name="person-circle" slot="icon-only"></ion-icon>
+          </ion-button>
+
+
+      </ion-toolbar>
+    </ion-header>
+
+    <!-- ✅ POPOVER FOR USER -->
+    <ion-popover [isOpen]="isPopoverOpen" [event]="popoverEvent" (didDismiss)="isPopoverOpen = false">
+      <ng-template>
+        <ion-list lines="none" class="user-popover">
+          <ion-item>
+            <ion-label>
+              <h2>{{ username }}</h2>
+              <p>{{ userRole }}</p>
+            </ion-label>
+          </ion-item>
+          <ion-item button (click)="logout()">
+            <ion-icon name="log-out-outline" slot="start"></ion-icon>
+            <ion-label>Logout</ion-label>
+          </ion-item>
+        </ion-list>
+      </ng-template>
+    </ion-popover>
+
+    <ion-content>
+      <div class="ion-padding" *ngIf="!formStarted">
+        <div class="disease-tiles">
+
+
+          <!-- Dashboard image 
+      <div class="dashboard-image">
+        <img src="assets/dash.png" alt="Dashboard">
+      </div>-->
+
+      
+      
+      
+        <ion-grid *ngIf="activeDisease === null" class="dashboard-grid">
+
+          <div class="dashboard-card2"  >
+            <div class="chart-grid">
+              
+              <!-- Left Column -->
+              <div class="chart-left">
+                <!-- Bar Chart -->
+                <div class="chart bar-chart">
+                  <svg viewBox="0 0 100 50" preserveAspectRatio="none">
+                    <g class="grid">
+                      <line x1="0" y1="10" x2="100" y2="10"></line>
+                      <line x1="0" y1="20" x2="100" y2="20"></line>
+                      <line x1="0" y1="30" x2="100" y2="30"></line>
+                      <line x1="0" y1="40" x2="100" y2="40"></line>
+                    </g>
+                    <g class="bars">
+                      <rect x="5"  y="20" width="8" height="20"></rect>
+                      <rect x="20" y="10" width="8" height="30"></rect>
+                      <rect x="35" y="15" width="8" height="25"></rect>
+                      <rect x="50" y="8"  width="8" height="32"></rect>
+                      <rect x="65" y="18" width="8" height="22"></rect>
+                      <rect x="80" y="5"  width="8" height="35"></rect>
+                    </g>
+                  </svg>
+                </div>
+          
+                <!-- Line Chart -->
+                <div class="chart line-chart">
+                  <svg viewBox="0 0 100 50" preserveAspectRatio="none">
+                    <g class="grid">
+                      <line x1="0" y1="10" x2="100" y2="10"></line>
+                      <line x1="0" y1="20" x2="100" y2="20"></line>
+                      <line x1="0" y1="30" x2="100" y2="30"></line>
+                      <line x1="0" y1="40" x2="100" y2="40"></line>
+                    </g>
+                    <path class="area" d="M0,30 20,25 40,15 60,20 80,10 100,15 L100,50 L0,50 Z"/>
+                    <polyline points="0,30 20,25 40,15 60,20 80,10 100,15" />
+                  </svg>
+                </div>
+              </div>
+          
+              <!-- Right Column -->
+              <div class="chart-right">
+                <div class="chart pie-chart">
+                  <svg viewBox="0 0 36 36">
+                    <path class="bg" d="M18 2.0845
+                         a 15.9155 15.9155 0 0 1 0 31.831
+                         a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <path class="fg" 
+                         stroke-dasharray="0, 100"
+                         d="M18 2.0845
+                         a 15.9155 15.9155 0 0 1 0 31.831
+                         a 15.9155 15.9155 0 0 1 0 -31.831" />
+                  </svg>
+                  <div class="chart-label">{{ paymentUseCount }} uses</div>
+                </div>
+              </div>
+          
+            </div>
+			
+			
+			
+			
+          </div>
+
+
+
+          <ion-row>
+            <ion-col size="6" *ngFor="let disease of diseases; let i = index; trackBy: trackByIndex">
+              <ion-card class="dashboard-card" button (click)="confirmBegin(i)">
+                
+                <!-- To p: Disease Name & Status -->
+                <div class="card-header">
+                  <span class="card-title">{{ disease.name }}</span>
+                  <span class="status-badge">Live</span>
+                </div>
+        
+                <!-- KPI Score -->
+                <div class="kpi-value">{{ disease.accuracy }}%</div>
+                <div class="kpi-label">Prediction Accuracy</div>
+        
+                <!-- Mini Sparkline Chart -->
+                <div class="sparkline">
+                  <svg viewBox="0 0 100 30">
+                    <polyline points="0,20 20,15 40,10 60,12 80,8 100,10" />
+                  </svg>
+                </div>
+        
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        
+          <!-- BEGIN BUTTON -->
+          <div *ngIf="activeDisease !== null && !choiceStarted && showBeginScreen">
+            <div class="center-content">
+              <ion-button expand="block" size="large" >
+                Begin
+              </ion-button>
+              <ion-button fill="clear" (click)="resetSelection()">
+                <ion-icon slot="start" name="arrow-back-outline"></ion-icon>
+                <span>Back</span>
+              </ion-button>
+            </div>
+          </div>
+
+          <!-- CHOICE OPTIONS -->
+          <div *ngIf="choiceStarted && activeDisease !== null">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="6">
+                  <ion-button expand="block" size="large" (click)="begin()">Fill-in</ion-button>
+                  <img src="/assets/vbook.png" alt="Voice icon" class="choice-image" />
+                </ion-col>
+                <ion-col size="6">
+                  <ion-button
+                   expand="block" size="large" (click)="startVoiceForm()">Voice</ion-button>
+                   <img src="/assets/vmic.png" alt="Voice icon" class="choice-image" />
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="ion-padding" *ngIf="formStarted">
+        <div>
+          <ion-button fill="clear" (click)="confirmBack()" color="medium">
+            <ion-icon slot="start" name="arrow-back-outline"></ion-icon>
+            Back to Selection
+          </ion-button>
+        
+          <!-- QUESTION PAGES -->
+          <div *ngIf="!SumittedForm && loadingForm" class="form-skeleton">
+            <ion-list>
+              <ion-item *ngFor="let placeholder of placeholderFields">
+                <ion-label>
+                  <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                </ion-label>
+                <ion-skeleton-text animated style="width: 100%; height: 60px;"></ion-skeleton-text>
+              </ion-item>
+            </ion-list>
+          </div>
+          <div *ngIf="!SumittedForm && !loadingForm">
+
+            
+            <ion-list *ngIf="pages.length">
+              <!-- Show the section title -->
+              <ion-item-divider color="light"  class="section-title">
+                <ion-label>
+                  <h2>{{ pages[currentPage].title }}</h2>
+                </ion-label>
+              </ion-item-divider>
+            
+            
+			  <!-- Loop through the fields -->
+			  <ion-item 
+				*ngFor="let field of pages[currentPage].fields; trackBy: trackByFieldKey"
+				[class.filled]="formData[field.key]"
+				[class.focused]="focusedField === field.key">
+
+				<ion-label position="floating">{{ field.label }}</ion-label>
+
+				<ion-select 
+				  *ngIf="field.type === 'select'" 
+				  interface="popover" 
+				  [(ngModel)]="formData[field.key]"
+				  (ionFocus)="focusedField = field.key"
+				  (ionBlur)="focusedField = null">
+				  <ion-select-option *ngFor="let opt of field.options">{{ opt }}</ion-select-option>
+				</ion-select>
+
+				<ion-input 
+				  *ngIf="field.type !== 'select'" 
+				  [type]="field.type" 
+				  [(ngModel)]="formData[field.key]"
+				  (ionFocus)="focusedField = field.key"
+				  (ionBlur)="focusedField = null">
+				</ion-input>
+			  </ion-item>
+
+
+			  
+			  
+			  
+			  
+			  
+            </ion-list>
+            
+        
+            <!-- PAGE NAVIGATION ROW -->
+            <ion-grid>
+              <ion-row class="ion-align-items-center ion-justify-content-between">
+
+                
+                <!-- Next / Submit Button -->
+                <ion-col size="11">
+                  <ion-button
+                    expand="block"
+                    (click)="currentPage < pages.length - 1 ? next() : submit()">
+                    {{ currentPage < pages.length - 1 ? 'Next' : 'Submit' }}
+                  </ion-button>
+                </ion-col>
+
+                <!-- Voice Mode Button 
+                <ion-col size="1">
+                  <ion-button
+                    *ngIf="!voiceUIActive"
+                    expand="block"
+                    fill="outline"
+                    (click)="startVoiceForm()">
+                    <ion-icon name="mic" class="center-icon"></ion-icon>
+                    
+                  </ion-button>
+                </ion-col>-->
+
+
+              </ion-row>
+            </ion-grid>
+
+            <!-- Optional Previous Button Below -->
+            <ion-button
+              *ngIf="currentPage > 0"
+              expand="block"
+              fill="clear"
+              (click)="prev()">
+              Previous
+            </ion-button>
+
+          </div>
+        
+          <!-- RISK SCORE VISUAL -->
+          <div *ngIf="SumittedForm">
+            <h2 class="text-center" style="font-size: 18;">YOUR RISK SCORE</h2>
+            <div class="svg-wrapper">
+			
+			
+			
+			<!-- 
+              <svg class="circular-progress" [ngStyle]="{ '--risk': animatedRiskScore }">
+                <circle class="bg"></circle>
+                <circle class="fg" [attr.stroke]="getStrokeColor()"></circle>
+                <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="15" fill="var(--ion-text-color)">
+                   {{ animatedRiskScore | number: '1.0-0' }}% 
+					</text>
+				</svg>
+			-->
+				
+				<svg class="circular-progress" [ngStyle]="{ '--dash': dash, '--circumference': circumference }">
+				  <circle class="bg"></circle>
+				  <circle class="fg" [attr.stroke]="getStrokeColor()"></circle>
+				  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
+						font-size="15" fill="var(--ion-text-color)">
+					{{ animatedRiskScore | number: '1.0-0' }}% 
+				  </text>
+				</svg>
+				
+              
+            </div>
+
+            <!-- INTERPRETATION PANEL -->
+            <div class="risk-interpretation-panel" *ngIf="riskInterpretation">
+              <ion-card>
+                <ion-card-content class="interpretation-text" style="color: var(--ion-text-color);">
+                  <p style="font-size: 8px;">{{ riskScore }}</p>
+                  <p [innerHTML]="riskInterp"></p>
+
+                </ion-card-content>
+              </ion-card>
+            </div>
+
+
+
+
+          </div>
+        </div>
+      </div>
+
+      <!-- VOICE OVERLAY -->
+      <div *ngIf="voiceUIActive" class="voice-overlay">
+        <ion-button fill="clear" (click)="confirmBack()" color="medium">
+          <ion-icon slot="start" name="arrow-back-outline"></ion-icon>
+          Back to Selection
+        </ion-button>
+
+        <div class="mic-circle" [ngClass]="micState" *ngIf="!isVoiceFormComplete"></div>
+        <div class="status-text" *ngIf="!isVoiceFormComplete">{{ statusMessage }}</div>
+        <div class="response-text" *ngIf="!isVoiceFormComplete">{{ responseMessage }}</div>
+
+        <div *ngIf="isVoiceFormComplete && SumittedForm" class="final-message">
+          ✅ All questions answered!
+          <div class="svg-wrapper">
+		  
+		  
+		  <!-- 
+            <svg class="circular-progress" [ngStyle]="{ '--risk': animatedRiskScore }">
+                <circle class="bg"></circle>
+                <circle class="fg" [attr.stroke]="getStrokeColor()"></circle>
+                <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="15" fill="var(--ion-text-color)">
+                   {{ animatedRiskScore | number: '1.0-0' }}% 
+                </text>
+              </svg>
+			  
+			  -->
+			  
+			  
+			  <svg class="circular-progress" [ngStyle]="{ '--dash': dash, '--circumference': circumference }">
+				  <circle class="bg"></circle>
+				  <circle class="fg" [attr.stroke]="getStrokeColor()"></circle>
+				  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
+						font-size="15" fill="var(--ion-text-color)">
+					{{ animatedRiskScore | number: '1.0-0' }}% 
+				  </text>
+				</svg>
+			  
+			  
+			  
+          </div>
+		  
+		  <!-- INTERPRETATION PANEL -->
+            <div class="risk-interpretation-panel" *ngIf="riskInterpretation">
+              <ion-card>
+                <ion-card-content class="interpretation-text" style="color: var(--ion-text-color);">
+                  <p style="font-size: 8px; text-align: end;">{{ riskScore }}</p>
+                  <p [innerHTML]="riskInterp"></p>
+
+                </ion-card-content>
+              </ion-card>
+            </div>
+        </div>
+      
+        <ion-button *ngIf="isWaitingToResume" expand="block" color="primary" (click)="resumeVoiceForm()">
+          ▶️ Resume Voice Form
+        </ion-button>
+  
+          
+        </div>
+        
+              
+        
+      
+    </ion-content>
+  </div>
+
+</ion-split-pane>
+</ng-container>

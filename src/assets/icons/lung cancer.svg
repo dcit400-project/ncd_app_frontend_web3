@@ -1,0 +1,91 @@
+<!-- Animated Cancer Ribbon SVG -->
+<svg width="110" height="110" viewBox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cancer category">
+  <title>Cancer ribbon animated icon</title>
+
+  <defs>
+    <!-- gradient for ribbon shine -->
+    <linearGradient id="shine" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#ffd0e8" stop-opacity="0.0"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#ffd0e8" stop-opacity="0.0"/>
+    </linearGradient>
+
+    <!-- soft blur for halo -->
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- halo glow -->
+  <g transform="translate(55,55)">
+    <circle r="34" fill="#ff6fb3" opacity="0.18">
+      <animate attributeName="opacity" values="0.12;0.28;0.12" dur="3.2s" repeatCount="indefinite" />
+      <animate attributeName="r" values="34;38;34" dur="3.2s" repeatCount="indefinite" />
+    </circle>
+  </g>
+
+  <!-- ribbon path (centered) -->
+  <g transform="translate(15,8)">
+    <path id="ribbon" d="
+      M40 6
+      C22 6, 12 26, 26 40
+      C12 54, 30 80, 40 72
+      C50 80, 68 54, 54 40
+      C68 26, 58 6, 40 6
+      Z
+      M40 42
+      C36 46, 40 62, 40 66
+      C40 62, 44 46, 40 42 Z"
+      fill="#ff69b4"
+      stroke="#e60073"
+      stroke-width="2.5"
+      filter="url(#softGlow)">
+      <!-- subtle pump -->
+      <animateTransform attributeName="transform"
+                        type="scale"
+                        values="1;1.03;1"
+                        dur="2.6s"
+                        repeatCount="indefinite" />
+    </path>
+
+    <!-- ribbon center knot highlight using gradient -->
+    <path d="M36 20 C34 22, 46 34, 48 36 C46 34, 34 22, 36 20 Z"
+          fill="url(#shine)" opacity="0.9">
+      <animate attributeName="opacity" values="0.6;0.95;0.6" dur="2.6s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- shimmer sweep -->
+    <rect x="-10" y="-10" width="120" height="120" fill="url(#shine)" opacity="0">
+      <animate attributeName="opacity" values="0;0.55;0" dur="4.2s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" attributeType="XML" type="translate"
+                        values="-80,0; 80,0" dur="4.2s" repeatCount="indefinite"/>
+    </rect>
+
+    <!-- small rotating accent loop -->
+    <g transform="translate(40,12)">
+      <circle r="3.2" fill="#fff6fb" opacity="0.9">
+        <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="4.8s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.4;1;0.4" dur="4.8s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+  </g>
+
+  <!-- outline pulse to match selection glow -->
+  <path d="M55 14
+           C37 14, 27 34, 41 48
+           C27 62, 45 88, 55 80
+           C65 88, 83 62, 69 48
+           C83 34, 73 14, 55 14 Z"
+        fill="none"
+        stroke="#ff6fb3"
+        stroke-width="2"
+        stroke-linejoin="round"
+        opacity="0.12">
+    <animate attributeName="opacity" values="0.12;0.28;0.12" dur="3.2s" repeatCount="indefinite"/>
+    <animate attributeName="stroke-width" values="2;4;2" dur="3.2s" repeatCount="indefinite"/>
+  </path>
+</svg>

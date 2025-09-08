@@ -1,0 +1,53 @@
+<ion-content >
+  <div class="ion-padding auth-page">
+  <div class="auth-card">
+    <ion-segment [(ngModel)]="authMode" value="login" class="auth-toggle">
+      <ion-segment-button value="login">
+        <ion-label>Login</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="signup">
+        <ion-label>Sign Up</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
+    <h2>{{ authMode === 'login' ? 'Welcome' : 'Create an Account' }}</h2>
+
+    <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+      <ion-item>
+        <ion-icon name="person-outline" slot="start"></ion-icon>
+        <ion-input placeholder="ID" formControlName="id"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+        <ion-input placeholder="Password" type="password" formControlName="password"></ion-input>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label position="stacked" style="padding-bottom: 50px;">Select Role</ion-label>
+        <ion-radio-group formControlName="role">
+          <ion-item lines="none">
+            <ion-label>Doctor</ion-label>
+            <ion-radio slot="start" value="Doctor"></ion-radio>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-label>Patient</ion-label>
+            <ion-radio slot="start" value="Patient"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-item>
+	  
+	  <ion-item lines="none" style="visibility: hidden;">
+        <!--<ion-label formControlName="intro">Intro Seen</ion-label>
+		<ion-label>Yes</ion-label> <ion-radio slot="start" value="SeenYes"></ion-radio>
+		 <ion-label>No</ion-label> <ion-radio slot="start" value="SeenNo"></ion-radio>
+          -->
+		  
+      </ion-item>
+
+      <ion-button expand="block" class="submit-btn" type="submit">
+        {{ authMode === 'login' ? 'Login' : 'Sign Up' }}
+      </ion-button>
+    </form>
+  </div></div>
+</ion-content>

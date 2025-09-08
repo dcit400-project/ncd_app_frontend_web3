@@ -1,0 +1,97 @@
+<!-- Asthma category SVG — flashy, vector, static illustration -->
+<svg width="220" height="220" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Asthma icon">
+  <title>Asthma icon — lungs and inhaler</title>
+
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ff9a9e"/>
+      <stop offset="50%" stop-color="#fad0c4"/>
+      <stop offset="100%" stop-color="#fbc2eb"/>
+    </linearGradient>
+
+    <linearGradient id="lungGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff7f8"/>
+      <stop offset="100%" stop-color="#ffecec"/>
+    </linearGradient>
+
+    <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#ff7f7f" flood-opacity="0.12"/>
+    </filter>
+
+    <radialGradient id="particleGrad" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.3"/>
+    </radialGradient>
+  </defs>
+
+  <!-- background rounded rectangle with subtle glow -->
+  <rect x="6" y="6" width="208" height="208" rx="28" ry="28" fill="url(#bgGrad)"/>
+  <rect x="12" y="12" width="196" height="196" rx="24" ry="24" fill="none" stroke="#ffffff" stroke-opacity="0.12" stroke-width="2"/>
+
+  <!-- soft halo -->
+  <g transform="translate(110,70)">
+    <ellipse rx="72" ry="40" fill="#ffdfe6" opacity="0.14"/>
+  </g>
+
+  <!-- stylized lungs (center) -->
+  <g transform="translate(110,95)" filter="url(#softShadow)">
+    <!-- left lung -->
+    <path d="M-34,-8
+             C-54,6 -56,36 -44,58
+             C-36,74 -24,80 -16,80
+             C-8,80 -2,76 6,66"
+          fill="url(#lungGrad)" stroke="#ff7a8a" stroke-width="2.2" stroke-linejoin="round"/>
+
+    <!-- right lung (mirrored) -->
+    <path d="M34,-8
+             C54,6 56,36 44,58
+             C36,74 24,80 16,80
+             C8,80 2,76 -6,66"
+          fill="url(#lungGrad)" stroke="#ff7a8a" stroke-width="2.2" stroke-linejoin="round"/>
+
+    <!-- bronchial central trunk -->
+    <path d="M0,-30
+             L0,12
+             C0,18 2,22 6,24"
+          stroke="#ff5466" stroke-width="3" stroke-linecap="round" fill="none"/>
+
+    <!-- subtle inner vein lines -->
+    <g stroke="#ff9aa0" stroke-width="1.2" fill="none" opacity="0.9">
+      <path d="M-18,10 C-12,4 -6,2 -2,6"/>
+      <path d="M-26,28 C-20,18 -10,16 -6,24"/>
+      <path d="M18,10 C12,4 6,2 2,6"/>
+      <path d="M26,28 C20,18 10,16 6,24"/>
+    </g>
+  </g>
+
+  <!-- inhaler (bottom-right) -->
+  <g transform="translate(150,150) rotate(-18)">
+    <rect x="-28" y="-10" width="56" height="22" rx="6" ry="6" fill="#ffffff" stroke="#0b2a66" stroke-width="1.6"/>
+    <rect x="-20" y="-28" width="32" height="18" rx="4" ry="4" fill="#0b2a66"/>
+    <rect x="-10" y="-22" width="12" height="8" rx="2" ry="2" fill="#4d96ff"/>
+    <path d="M-6,-6 L-12,8" stroke="#0b2a66" stroke-width="1.4" stroke-linecap="round"/>
+    <path d="M6,-6 L12,8" stroke="#0b2a66" stroke-width="1.4" stroke-linecap="round"/>
+    <!-- subtle highlight -->
+    <rect x="-26" y="-8" width="14" height="8" rx="3" ry="3" fill="#e6f0ff" opacity="0.9"/>
+  </g>
+
+  <!-- air particles / airflow illustration (top-left cluster) -->
+  <g transform="translate(70,58)">
+    <circle cx="-6" cy="-2" r="5" fill="url(#particleGrad)" opacity="0.95" />
+    <circle cx="8" cy="-8" r="4" fill="url(#particleGrad)" opacity="0.9" />
+    <circle cx="-18" cy="6" r="3" fill="url(#particleGrad)" opacity="0.85" />
+    <path d="M-24,18 C-10,10 0,8 22,-2" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1.6" stroke-linecap="round"/>
+  </g>
+
+  <!-- small decorative sparkles -->
+  <g fill="#ffffff" opacity="0.85">
+    <rect x="34" y="28" width="4" height="2" rx="1" ry="1" transform="rotate(20 36 29)"/>
+    <rect x="182" y="36" width="3" height="1.5" rx="0.8" ry="0.8" transform="rotate(-10 183.5 36.75)"/>
+    <rect x="38" y="170" width="5" height="2" rx="1" ry="1" transform="rotate(-20 40.5 171)"/>
+  </g>
+
+  <!-- bold label (optional) -->
+  <g font-family="Inter, Arial, sans-serif" font-weight="700" font-size="14" fill="#0b1220" text-anchor="middle">
+    <text x="110" y="195">ASTHMA</text>
+  </g>
+</svg>

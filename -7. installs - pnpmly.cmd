@@ -1,0 +1,1 @@
+start cmd /k "pnpm install --offline @capacitor/core@7.2.0 @capacitor/android@7.2.0 @capacitor/cli@7.2.0 & pnpm cap init & pnpm cap add android"

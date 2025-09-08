@@ -1,0 +1,63 @@
+
+.dashboard-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      transparent 20%,
+      var(--dashboard-reflection-color) 50%, /* Uses global var */
+      transparent 100%
+    );
+    transform: skewX(-25deg);
+    animation: reflectionSlide 7s ease-in-out infinite;
+    pointer-events: none;
+  }
+  
+  
+  
+  
+  @keyframes reflectionSlide {
+    0%   { left: -75%; }
+    40%  { left: 120%; }
+    100% { left: 120%; }
+  }
+  
+  
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.6rem;
+  }
+  
+  .card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ion-text-color);
+  }
+  
+  .status-badge {
+    background: var(--ion-color-primary);
+    color: var(--ion-color-primary-contrast);
+    padding: 0.2rem 0.5rem;
+    font-size: 0.7rem;
+    border-radius: 8px;
+  }
+  
+  .kpi-value {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--ion-color-primary);
+    margin-bottom: 0.2rem;
+  }
+  
+  .kpi-label {
+    font-size: 0.75rem;
+    color: var(--ion-color-medium);
+    margin-bottom: 0.6rem;
+  }
+  

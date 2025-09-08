@@ -1,0 +1,1 @@
+start cmd /k "pnpm cap add android & pnpm run build"
