@@ -1,5 +1,5 @@
 
-const host="http://192.168.255.194:3000"
+const host="localhost:3000"
 
 import express from "express";
 import fetch from "node-fetch";
