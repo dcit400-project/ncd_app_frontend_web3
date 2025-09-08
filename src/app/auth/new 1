@@ -1,5 +1,0 @@
-// seed-data.ts
-const count = await sqliteService.getPatientCount();
-if (count === 0) {
-  await sqliteService.addDummyPatients(); // hypothetical seeding method
-}
