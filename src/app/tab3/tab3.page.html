@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Payment History</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="loadPayments()">
+        <ion-icon name="refresh-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header> 
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item *ngFor="let payment of payments" (click)="showDetails(payment)">
+      <ion-label>
+        <h3>₵{{ payment.amount }}</h3>
+        <p>{{ payment.date }} - {{ payment.method }}</p>
+        <p>Status: {{ payment.status }}</p>
+        <p>ID: {{ payment.user_id }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- Details Panel -->
+  <ion-card *ngIf="selectedPayment">
+    <ion-card-header>
+      <ion-card-title>Payment Details</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Amount:</strong> ₵{{ selectedPayment.amount }}</p>
+      <p><strong>Date:</strong> {{ selectedPayment.date }}</p>
+      <p><strong>Status:</strong> {{ selectedPayment.status }}</p>
+      <p><strong>Method:</strong> {{ selectedPayment.method }}</p>
+      
+      <ion-button expand="block" color="medium" (click)="closeDetails()">Close</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Pay Now Button -->
+  <ion-button expand="block" color="success" (click)="openPaymentModal()">Pay Now</ion-button>
+</ion-content>

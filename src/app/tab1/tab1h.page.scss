@@ -1,0 +1,55 @@
+.dot.active {
+    background-color: var(--ion-color-primary);
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  
+  
+  
+  
+  //----------Side bar
+  
+  
+  .menu-profile-section {
+    text-align: center;
+    padding: 24px 16px 16px;
+  
+    h2 {
+      margin: 8px 0 4px;
+      font-weight: bold;
+    }
+  
+    p {
+      margin: 0;
+      color: var(--ion-color-medium);
+    }
+  
+    ion-avatar {
+      margin: 0 auto;
+      width: 96px;
+      height: 96px;
+    }
+  
+    ion-icon {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  
+  /* Main option style */
+  .menu-option {
+    --background: transparent;
+    --ion-item-background: transparent;
+    border-radius: 12px;
+    margin: 6px 12px;
+    padding: 8px 10px;
+    transition: background 0.2s ease;
+    color: var(--ion-color-primary); // auto-switch with theme
+  }
+  
+  .menu-option:hover,
+  .menu-option.ion-activated {
+    --background: rgba(0, 0, 0, 0.05); // soft hover effect
+  }
+  
+  

@@ -1,0 +1,19 @@
+import { IonicModule } from '@ionic/angular';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+import { TestPageRoutingModule } from './test-routing.module';
+
+import { TestPage } from './test.page';
+
+@NgModule({
+  imports: [
+    IonicModule,
+    CommonModule,
+    FormsModule,
+    TestPageRoutingModule
+  ],
+  declarations: [TestPage]
+})
+export class TestPageModule {}

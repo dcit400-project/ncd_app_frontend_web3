@@ -1,0 +1,186 @@
+.patient-row {
+    --background: var(--ion-item-background);
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  
+    &:hover {
+      transform: scale(1.01);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+  }
+  
+  .patient-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* space between text groups */
+    overflow: hidden; /* avoid layout breaking on long names */
+  }
+  
+  .patient-info h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ion-text-color);
+    margin: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  
+  .patient-info .disease {
+    font-size: 0.65rem;
+    color: var(--ion-color-primary);
+	background: rgba(var(--ion-color-primary), 0.1);
+    white-space: nowrap;
+  }
+  
+  .patient-info .patient_id {
+    font-size: 0.75rem;
+    color: var(--ion-color-primary);
+	background: rgba(var(--ion-color-primary), 0.1);
+    white-space: nowrap;
+  }
+  
+  .patient-info .risk {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--ion-color-danger);
+    background: rgba(var(--ion-color-danger-rgb), 0.1);
+    padding: 3px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+  }
+  //-----------delete view
+  
+  ion-item-options {
+  --min-width: 140px; /* Makes swipe area bigger */
+  padding: 0;
+
+  ion-item-option {
+    font-weight: 600;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 12px 12px 0;
+    transition: all 0.25s ease-in-out;
+  }
+
+  /* View Button */
+  ion-item-option[color="primary"] {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    color: white;
+    box-shadow: 0 2px 8px rgba(79, 172, 254, 0.4);
+
+    &:hover, &:active {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(79, 172, 254, 0.6);
+    }
+  }
+
+  /* Delete Button */
+  ion-item-option[color="danger"] {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    color: white;
+    box-shadow: 0 2px 8px rgba(255, 75, 43, 0.4);
+
+    &:hover, &:active {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(255, 75, 43, 0.6);
+    }
+  }
+}
+
+  
+  //------------Disease-Grid
+  .disease-scroll {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding: 10px;
+
+}
+
+.disease-box {
+  flex: 0 0 auto;
+  width: 120px;
+  height: 140px;
+  background-color: transparent;
+  color: var(--ion-color-dark);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    margin: 10px 10px 10px 10px;
+
+}
+
+
+
+
+.disease-box .icon-container {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 8px;
+  padding: 5px 5px 5px 5px;
+}
+
+.disease-box .icon-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.disease-box .disease-name {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  color: var(--ion-text-color);
+}
+.disease-name.selected {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  color: var( --ion-color-step-100);
+}
+.disease-box.selected {
+  background-color: var(--ion-color-primary);
+  color: white;
+  box-shadow: 0 0 15px var(--ion-color-primary);
+  transform: translateY(-3px);
+}
+
+.disease-box.selected img {
+  filter: brightness(1.5) ; /*invert(1 Invert icon color */
+}
+
+//---------------table---
+.patient-info table {
+  width: 100%;
+  border-collapse: separate; /* Allow spacing */
+  border-spacing: 20px 10px; /* Horizontal then vertical spacing */
+}
+
+.patient-info td {
+  background: var(--ion-color-light);
+  padding: 8px 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+
+.patient-info strong {
+  color: var(--ion-color-primary);
+}
+
+.patient-info tr {
+  border-bottom: 1px solid var(--ion-color-light-shade);
+}
+
+
+  

@@ -1,0 +1,121 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ patient.user_id }}'s Details</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <!-- Tabs inside the modal header -->
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="activeTab" value="view">
+      <ion-segment-button value="view">
+        <ion-label class="label">View Data</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="comments">
+        <ion-label class="label">Comments</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+ <!-- ================= View Data Tab ================= -->
+<ng-container *ngIf="activeTab === 'view'">
+  <ion-card>
+    <ion-card-header class="patient-header">
+      <div class="patient-header-row">
+        <ion-card-title>{{ patient.condition }}</ion-card-title>
+        <ion-card-subtitle>Risk: {{ patient.risk }}%</ion-card-subtitle>
+      </div>
+    </ion-card-header>
+    <!--
+    <ion-card-content>
+      <p><strong>Age:</strong> {{ patient.age }}</p>
+      <p><strong>Date:</strong> {{ patient.date }}</p> 
+    </ion-card-content>-->
+  </ion-card>
+
+  <div class="spreadsheet-container">
+    <div class="spreadsheet-header">
+      <div class="col-key">Field</div>
+      <div class="col-value">Value</div>
+    </div>
+    <div class="spreadsheet-row" *ngFor="let key of (patient.formData | keyvalue); let i = index">
+      <div class="col-key">{{ key.key }}</div>
+      <div class="col-value">{{ key.value }}</div>
+    </div>
+  </div>
+</ng-container>
+
+
+  <!-- ================= Comments Tab ================= -->
+  <ng-container *ngIf="activeTab === 'comments'">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Comment</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-textarea
+          placeholder="Write your message to the patient..."
+          auto-grow="true"
+          [(ngModel)]="commentToPatient">
+        </ion-textarea>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Note</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-textarea
+          placeholder="Private notes for your records..."
+          auto-grow="true"
+          [(ngModel)]="noteToSelf">
+        </ion-textarea>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-button expand="block" color="primary" (click)="saveComments()">
+      Save Comments
+    </ion-button>
+
+    <ion-card *ngIf="allNotes.length > 0">
+      <ion-card-header>
+        <ion-card-title>Saved Comments and Notes</ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content>
+        <ion-grid>
+          <ion-row class="header">
+            <ion-col size="3"><strong>Comments</strong></ion-col>
+            <ion-col size="3"><strong>Notes</strong></ion-col>
+            <ion-col size="3"><strong>Timestamp</strong></ion-col>
+            <ion-col size="3"><strong>Action</strong></ion-col>
+          </ion-row>
+          
+          <ion-row *ngFor="let note of allNotes; let i = index">
+            <ion-col size="3">{{ note.commentToPatient }}</ion-col>
+            <ion-col size="3">{{ note.noteToSelf }}</ion-col>
+            <ion-col size="3">{{ note.timestamp | date: 'short' }}</ion-col>
+            <ion-col size="3">
+              <ion-button color="danger" size="small" (click)="deleteNote(i)">
+                Delete
+              </ion-button>
+            </ion-col>
+          </ion-row>
+          
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+    
+    <ion-card *ngIf="allNotes.length === 0">
+      <ion-card-content>No saved notes yet.</ion-card-content>
+    </ion-card>
+  </ng-container>
+
+</ion-content>

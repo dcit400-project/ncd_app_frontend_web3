@@ -1,0 +1,138 @@
+ion-card {
+    margin-bottom: 1rem;
+  }
+  
+  ion-list-header {
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+  
+
+  .spreadsheet-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    background: var(--ion-card-background);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--ion-color-step-150);
+  }
+  
+  .spreadsheet-header {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    background: var(--ion-color-primary);
+    color: var(--ion-color-primary-contrast);
+    font-weight: bold;
+    padding: 0.75rem;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+  }
+  
+  .spreadsheet-row {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    padding: 0.75rem;
+    font-size: 0.95rem;
+    border-bottom: 1px solid var(--ion-color-step-150);
+    transition: background 0.2s ease;
+  
+    &:nth-child(even) {
+      background: var(--ion-color-step-50);
+    }
+  
+    &:hover {
+      background: var(--ion-color-step-100);
+    }
+  }
+  
+  .col-key {
+    font-weight: 600;
+    color: var(--ion-text-color);
+  }
+  
+  .col-value {
+    color: var(--ion-text-color);
+  }
+
+  
+
+
+
+
+
+
+  /* Segmented control toolbar styling */
+.modal-segment-toolbar {
+  --background: var(--ion-toolbar-background);
+  --border-color: var(--ion-color-step-150);
+  border-bottom: 1px solid var(--border-color);
+
+  ion-segment {
+    width: 100%;
+  }
+
+  ion-segment-button {
+    --color-checked: var(--ion-color-primary);
+    --indicator-color: var(--ion-color-primary);
+    --color: var(--ion-text-color);
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+}
+
+/* Comments section styling */
+ion-card {
+  --background: var(--ion-card-background);
+  --color: var(--ion-text-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+.label {
+  --background: var(--ion-card-background);
+  --color: var(--ion-text-color);
+ 
+}
+
+ion-card-title {
+  font-weight: 600;--color: var(--ion-text-color);
+}
+
+
+
+ion-textarea {
+  --background: var(--ion-item-background);
+  --color: var(--ion-text-color);
+  border-radius: 8px;
+  padding: 8px;
+  min-height: 80px;
+}
+
+
+
+
+.patient-header {
+  padding: 0.75rem 1rem;
+  background: var(--ion-card-background);
+  border-bottom: 1px solid var(--ion-color-step-150);
+}
+
+.patient-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+
+  ion-card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--ion-text-color);
+  }
+
+  ion-card-subtitle {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--ion-color-primary);
+    background: rgba(var(--ion-color-primary-rgb), 0.1);
+    padding: 4px 8px;
+    border-radius: 6px;
+  }
+}

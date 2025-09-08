@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="closePage()">
+        <ion-icon slot="icon-only" name="arrow-back" (click)="refreshP()"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Pay with Paystack</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-label position="floating">Email</ion-label>
+    <ion-input [(ngModel)]="email" type="email"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Amount (₦/GHS)</ion-label>
+    <ion-input [(ngModel)]="amount" type="number"></ion-input>
+  </ion-item>
+
+  <ion-button expand="block" (click)="pay()">Pay Now</ion-button>
+</ion-content>

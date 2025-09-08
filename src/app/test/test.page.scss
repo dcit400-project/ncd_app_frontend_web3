@@ -1,0 +1,80 @@
+
+//------Tutorial--------------------
+
+.intro-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6vh 5vw;
+  text-align: center;
+
+  ion-title,
+  h1,
+  h2 {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 1rem;
+    color: var(--ion-color-step-600);
+    max-width: 90%;
+    margin: 0 auto 1rem;
+  }
+}
+
+.intro-img {
+  width: 80%;
+  max-width: 300px;
+  max-height: 240px;
+  object-fit: contain;
+  margin: 0 auto 2rem;
+  transition: transform 0.4s ease;
+}
+
+.intro-img:hover {
+  transform: scale(1.05);
+}
+
+.dot-container {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 2rem 0;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--ion-color-medium);
+  opacity: 0.3;
+  transform: scale(0.9);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.dot.active {
+  background-color: var(--ion-color-primary);
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+
+/* ------------------ Risk Score Circle ------------------ */
+.svg-wrapper { display: flex; justify-content: center; margin-top: 1rem; }
+.circular-progress {
+  --size: 150px;  --half-size: calc(var(--size) / 2);  --stroke-width: 20px;  --radius: calc((var(--size) - var(--stroke-width)) / 2); 
+ --circumference: calc(var(--radius) * pi * 2);  --dash: calc((var(--progress) * var(--circumference)) / 100); width: var(--size);
+  height: var(--size); animation: progress-animation 1s ease-out forwards;
+}
+.circular-progress circle {
+  cx: var(--half-size); cy: var(--half-size); r: var(--radius); stroke-width: var(--stroke-width); fill: none; stroke-linecap: round;
+}
+.circular-progress circle.bg { stroke: var(--ion-color-step-100); }
+.circular-progress circle.fg { 
+  transform: rotate(-90deg); transform-origin: var(--half-size) var(--half-size); 
+  stroke-dasharray: var(--dash) calc(var(--circumference) - var(--dash)); transition: stroke-dasharray 0.3s ease-out;
+}
+@keyframes progress-animation { from { --progress: 0; } to { --progress: var(--risk); } }
+@property --progress { syntax: "<number>"; inherits: false; initial-value: 0; }
+

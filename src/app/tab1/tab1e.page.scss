@@ -1,0 +1,54 @@
+.pie-chart .chart-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    font-size: 1rem;
+    color: var(--ion-color-primary);
+  }
+  
+  /* ===== Bar Chart ===== */
+  .bar-chart svg {
+    width: 100%;
+    height: 70px;
+  }
+  .grid line {
+    stroke: var(--ion-color-step-200);
+    stroke-width: 0.5;
+  }
+  .bars rect {
+    fill: var(--ion-color-primary);
+    rx: 2;
+    ry: 2;
+    animation: growBar 2s ease-in-out infinite alternate;
+  }
+  @keyframes growBar {
+    0%   { transform: scaleY(0.5); transform-origin: bottom; }
+    100% { transform: scaleY(1);   transform-origin: bottom; }
+  }
+  
+  /* ===== Line Chart ===== */
+  .line-chart svg {
+    width: 100%;
+    height: 70px;
+  }
+  .line-chart .area {
+    fill: var(--ion-color-primary);
+    opacity: 0.15;
+  }
+  .line-chart polyline {
+    fill: none;
+    stroke: var(--ion-color-primary);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-dasharray: 400;
+    animation: waveLine 10.5s ease-in-out infinite;
+  }
+  @keyframes waveLine {
+    0%   { stroke-dashoffset: 0; }
+    50%  { stroke-dashoffset: 500; }
+    100% { stroke-dashoffset: 0; }
+  }
+  
+  

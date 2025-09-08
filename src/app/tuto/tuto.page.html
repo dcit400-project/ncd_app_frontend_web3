@@ -1,0 +1,27 @@
+
+  <!-- *ngIf="!introSeen" -->
+  
+  <ion-content class="intro-page"  >
+    <div class="intro-container">
+      <div *ngFor="let slide of slides; let i = index">
+        <div *ngIf="currentSlide === i">
+          <img [src]="slide.image" class="intro-img" />
+          <h2>{{ slide.title }}</h2>
+          <p>{{ slide.description }}</p>
+        </div>
+      </div>
+  
+      <div class="dot-container">
+        <div
+          *ngFor="let s of slides; let i = index"
+          class="dot"
+          [class.active]="i === currentSlide"
+        ></div>
+      </div>
+  
+      <ion-button expand="block" (click)="nextSlide()">
+        {{ currentSlide < slides.length - 1 ? 'Next' : 'Get Started' }}
+      </ion-button>
+    </div>
+  </ion-content>  
+  

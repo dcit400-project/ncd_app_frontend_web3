@@ -1,0 +1,70 @@
+/* Submenu style (inside Settings) */
+.submenu {
+    margin-left: 16px;
+    margin-top: -4px;
+  }
+  
+  .submenu-option {
+    --background: transparent;
+    --ion-item-background: transparent;
+    padding-left: 8px;
+    padding-right: 8px;
+    font-size: 14px;
+  }
+  
+  /* Icon color from global variable */
+  ion-icon {
+    color: var(--custom-icon-color); // defined in your global theme
+    font-size: 20px;
+  }
+  
+  /* Optional: Animate the chevron icon */
+  .chevron-icon {
+    transition: transform 0.3s ease;
+  }
+  
+  //-----------
+  .section-title {
+    background-color: var(--section-title-background, #f4f4f4);
+    padding-top: 12px;
+    padding-bottom: 12px;
+  
+    ion-label h2 {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: var(--section-title-color, var(--ion-color-dark));
+      margin: 0;
+    }
+  }
+  //-------------interpre
+  
+  .interpretation-text p {
+    color: var(--ion-text-color);
+    
+  }
+  
+  
+  //---------------Focus field
+/* When a field is filled */
+ion-item.filled {
+    --background: rgba(var(--ion-color-primary-rgb), 0.08); /* light blue tint */  /* keep normal background */
+  border-left: 3px solid var(--ion-color-success); /* thinner green indicator */
+  transition: border-left 0.3s ease;
+
+  ion-label {
+    color: var(--ion-color-success-shade); /* softer green */
+    font-weight: 500; /* not too bold */
+  }
+}
+
+/* When a field is focused */
+ion-item.focused {
+  --background: rgba(var(--ion-color-primary-rgb), 0.08); /* very light tint */
+  border-left: 3px solid var(--ion-color-primary);
+
+  ion-label {
+    color: var(--ion-color-primary-shade);
+    font-weight: 500;
+  }
+}
+
