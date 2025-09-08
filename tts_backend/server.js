@@ -26,7 +26,7 @@ app.post("/tts", async (req, res) => {
       },
       body: JSON.stringify({
         model_id: "asyncflow_v2.0",
-        transcript: text,
+        transcript: text ||'I failed to get the requeest body',
         voice: {
           mode: "id",
           id: "69cb82f6-3831-4f97-84fb-181f5f60a04b" // change voice ID if needed
