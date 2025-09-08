@@ -1,19 +1,15 @@
 {
 	"version": 2,
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build"
-    }
-  ],
+  "framework": "angular",
+  "buildCommand": "npm run build",
+  "outputDirectory": "www",
   "routes": [
     { 
       "src": "/(.*)",
       "dest": "/index.html"
     }
   ],
-  "buildCommand": "pnpm run build",
-  "outputDirectory": "./www"
+ 
 }
    
  
