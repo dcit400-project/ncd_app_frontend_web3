@@ -7,7 +7,7 @@
   "scripts": {
     "ng": "ng",
     "start": "nodemon tts_backend/server.js",
-    "build": "nodemon tts_backend/server.js",
+   
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint"
