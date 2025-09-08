@@ -1,5 +1,6 @@
 // server.js
 import express from "express";
+//import fetch from "node-fetch";
 import cors from "cors";
 import dotenv from "dotenv";
 dotenv.config();
@@ -81,6 +82,7 @@ app.post("/tts", async (req, res) => {
     console.error(err);
     res.status(500).json({ error: "TTS failed", details: err.message });
   }
+  console.log("Hereee");
 });
 
 // ------------------------------------------------------
@@ -143,6 +145,7 @@ app.get("/api/verify/:ref", async (req, res) => {
     console.error("Verify error:", err);
     res.status(500).json({ error: "Verification failed" });
   }
+  console.log("Hereee 2222");
 });
 
 // ------------------------------------------------------
