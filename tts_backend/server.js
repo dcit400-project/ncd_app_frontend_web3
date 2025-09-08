@@ -90,6 +90,7 @@ app.post("/tts", async (req, res) => {
 
 
 app.listen(3000, () => console.log(`Server running on ${host}`));
+ console.log("Online. Listening.");
 
 
 //------------------------------------------------------------------------------------------------------Pay...
@@ -159,7 +160,7 @@ app.get("/api/verify/:ref", async (req, res) => {
 
 app.listen(5000, () => console.log(`Server running on ${host2}`));
 
-
+ console.log("Online. Listening.");
 
 
 
