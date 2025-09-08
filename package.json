@@ -7,7 +7,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ionic build --prod --output public",
+    "build": "nodemon tts_backend/server.js & nodemon paystack_backend/server.js & ionic build --prod --output public",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint"
