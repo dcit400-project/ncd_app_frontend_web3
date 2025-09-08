@@ -13,7 +13,7 @@
     }
   ],
   "buildCommand": "pnpm run build",
-  "outputDirectory": "www"
+  "outputDirectory": "./www"
 }
    
  
