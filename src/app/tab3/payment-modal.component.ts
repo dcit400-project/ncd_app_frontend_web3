@@ -15,7 +15,7 @@ import { SQLiteService } from '../auth/auth.service'; // <-- our DB service
 import { Browser } from '@capacitor/browser';
 
 import { Capacitor } from '@capacitor/core';
-
+ 
 
 
 import { registerPlugin } from '@capacitor/core';
