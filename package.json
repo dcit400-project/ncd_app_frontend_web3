@@ -1,5 +1,4 @@
 {
-  "packageManager": "pnpm@10.8.0",
   "name": "myApp",
   "version": "0.0.1",
   "author": "API Framework",
