@@ -1,6 +1,5 @@
 {
 	"version": 2,
-  "framework": "ionic",
   "buildCommand": "pnpm run build",
   "outputDirectory": "www",
   "routes": [
