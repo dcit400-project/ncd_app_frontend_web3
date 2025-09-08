@@ -1,21 +1,12 @@
 {
-	"version": 2,
+  "version": 2,
+  "framework": "static",
   "buildCommand": "pnpm run build",
   "outputDirectory": "www",
-  	"version": 2,
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build"
-    }
-  ],
   "routes": [
-    { 
+    {
       "src": "/(.*)",
       "dest": "/index.html"
     }
   ]
 }
-   
- 
- 
