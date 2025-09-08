@@ -1,16 +1,17 @@
-
-const host="localhost:3000"
-
+// server.js
 import express from "express";
 import fetch from "node-fetch";
 import cors from "cors";
-import dotenv from 'dotenv'
+import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
+// ------------------------------------------------------
+// TTS ROUTE
+// ------------------------------------------------------
 const ASYNC_API_KEY = process.env.ASYNC_API_KEY;
 
 app.post("/tts", async (req, res) => {
@@ -28,12 +29,12 @@ app.post("/tts", async (req, res) => {
         transcript: text,
         voice: {
           mode: "id",
-          id: "69cb82f6-3831-4f97-84fb-181f5f60a04b" // <-- replace with your chosen voice ID
+          id: "69cb82f6-3831-4f97-84fb-181f5f60a04b" // change voice ID if needed
         },
         output_format: {
-          container: "raw",       // must be raw
-          encoding: "pcm_s16le",  // required encoding
-          sample_rate: 44100      // required sample rate
+          container: "raw",
+          encoding: "pcm_s16le",
+          sample_rate: 44100,
         },
       }),
     });
@@ -43,16 +44,12 @@ app.post("/tts", async (req, res) => {
       throw new Error(`AsyncTTS failed: ${response.status} ${response.statusText} - ${errMsg}`);
     }
 
-    // Get raw PCM buffer
     const arrayBuffer = await response.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
 
-    // Send back as WAV (browser can play WAV easily)
+    // Build WAV header
     const wavHeader = Buffer.alloc(44);
-
-    const writeString = (buf, offset, str) => {
-      buf.write(str, offset, str.length, "ascii");
-    };
+    const writeString = (buf, offset, str) => buf.write(str, offset, str.length, "ascii");
 
     const sampleRate = 44100;
     const numChannels = 1;
@@ -87,18 +84,11 @@ app.post("/tts", async (req, res) => {
   }
 });
 
+// ------------------------------------------------------
+// PAYSTACK ROUTES
+// ------------------------------------------------------
+const PAYSTACK_SECRET = process.env.PAYSTACK_SECRET;
 
-
-app.listen(3000, () => console.log(`Server running on ${host}`));
- console.log("Online. Listening.");
-
-
-//------------------------------------------------------------------------------------------------------Pay...
-
-const host2 = "localhost:5000";
-
-
-const PAYSTACK_SECRET = process.env.PAYSTACK_SECRET; // your Paystack secret key
 // Initialize transaction
 app.post("/api/pay", async (req, res) => {
   try {
@@ -112,7 +102,7 @@ app.post("/api/pay", async (req, res) => {
       },
       body: JSON.stringify({
         email,
-        amount: amount * 100, // kobo / pesewas
+        amount: amount * 100, // in kobo/pesewas
         channels: ["card", "mobile_money", "bank"],
       }),
     });
@@ -149,7 +139,6 @@ app.get("/api/verify/:ref", async (req, res) => {
       return res.status(response.status).json({ error: data });
     }
 
-    // send back to frontend
     res.json(data);
   } catch (err) {
     console.error("Verify error:", err);
@@ -157,10 +146,13 @@ app.get("/api/verify/:ref", async (req, res) => {
   }
 });
 
+// ------------------------------------------------------
+// SERVER START (local only)
+// Netlify/Vercel will use exported app
+// ------------------------------------------------------
+if (process.env.NODE_ENV !== "production") {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+}
 
-app.listen(5000, () => console.log(`Server running on ${host2}`));
-
- console.log("Online. Listening.");
-
-
-
+export default app; // <-- Needed for Netlify/Vercel
