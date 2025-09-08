@@ -96,19 +96,6 @@ app.listen(3000, () => console.log(`Server running on ${host}`));
 
 const host2 = "localhost:5000";
 
-import express from "express";
-import fetch from "node-fetch";
-
-import dotenv from 'dotenv'
-dotenv.config();
-
-import cors from "cors";
-
-const app = express();
-app.use(cors());
-app.use(express.json());
-
-
 
 const PAYSTACK_SECRET = process.env.PAYSTACK_SECRET; // your Paystack secret key
 // Initialize transaction
