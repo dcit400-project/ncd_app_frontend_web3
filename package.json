@@ -34,7 +34,7 @@
     "swiper": "^11.2.10",
     "tslib": "^2.3.0",
     
-    "serverless-http": "^3.2.0""
+    "serverless-http": "^3.2.0"
   },
   
   "description": "An Ionic project"
