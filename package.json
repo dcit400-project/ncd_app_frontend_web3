@@ -45,7 +45,7 @@
     "ionicons": "^7.0.0",
     "jeep-sqlite": "^0.0.7",
     "msgpackr-extract": "3.0.3",
-    
+    "node-fetch": "^3.3.2",
     "nodemon": "^3.1.10",
     "openai": "^5.12.2",
     "paystackplugin": "link:paystackplugin",
