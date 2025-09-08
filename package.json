@@ -14,7 +14,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular-builders/custom-webpack": "^20.0.0",
+    "@angular-builders/custom-webpack": "^19.0.0",
     "@angular/animations": "^19.0.0",
     "@angular/common": "^19.2.10",
     "@angular/compiler": "^19.0.0",
@@ -48,14 +48,14 @@
     "node-fetch": "^3.3.2",
     "nodemon": "^3.1.10",
     "openai": "^5.12.2",
-    "paystackplugin": "link:paystackplugin",
+
     "realm-web": "^2.0.1",
     "rxjs": "~7.8.2",
     "sql.js": "^1.5.0",
     "stream-browserify": "^3.0.0",
     "swiper": "^11.2.10",
     "tslib": "^2.3.0",
-    "ttsplugin": "link:ttsplugin",
+
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
