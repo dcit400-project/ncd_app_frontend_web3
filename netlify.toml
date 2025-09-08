@@ -1,0 +1,13 @@
+[build]
+  command = "npm run build"
+  publish = "www" # your Ionic/Angular build output folder
+  functions = "netlify/functions"
+
+[dev]
+  framework = "vite" # or "angular" if you want to hook into Netlify dev
+  port = 8888
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/server/:splat"
+  status = 200
