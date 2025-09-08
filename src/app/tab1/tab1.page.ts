@@ -1253,7 +1253,7 @@ host_address_tts = 'http://localhost:3000'
 	  
 	  
 		
-		/**/
+		/*
 		async speakWithBackend(text: string): Promise<void> {
 			
 			return new Promise(async (resolve, reject) => {
@@ -1272,6 +1272,35 @@ host_address_tts = 'http://localhost:3000'
 				  await audio.play();
 			}); 
 		}
+*/
+
+	async speakWithBackend(text: string): Promise<void> {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const response = await fetch(`${this.host_address_tts}/tts`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text }),
+      });
+
+      // Force blob as MP3
+      const arrayBuffer = await response.arrayBuffer();
+      const blob = new Blob([arrayBuffer], { type: "audio/mpeg" });
+
+      const url = URL.createObjectURL(blob);
+      const audio = new Audio(url);
+
+      audio.onended = () => {
+        URL.revokeObjectURL(url); // cleanup
+        resolve();
+      };
+
+      await audio.play();
+    } catch (err) {
+      reject(err);
+    }
+  });
+}
 
   
 
