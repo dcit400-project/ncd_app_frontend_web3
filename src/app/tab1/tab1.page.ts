@@ -30,7 +30,7 @@ export class Tab1Page implements OnInit{
 
  //host_address = 'http://192.168.255.194:8000'
  host_address = ''
- host_address_tts = 'http://localhost:3000'
+ host_address_tts = 'https://ncdttspaystack.netlify.app'
   host_address_tabnet = 'https://ncd-app-oldk.onrender.com'
  host_address_tensorflow = 'https://ncd400-api-production-74ef.up.railway.app'
  host_address_parse = 'https://tk6t2l4oxg951-flask--5000.prod1.defang.dev/'
@@ -41,7 +41,7 @@ export class Tab1Page implements OnInit{
 host_address_tabnet = 'http://192.168.192.194:8000'
  host_address_tensorflow = 'http://192.168.192.194:8000'
  host_address_parse = 'http://192.168.192.194:8000'
-
+host_address_tts = 'http://localhost:3000'
 */
 
 
