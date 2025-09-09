@@ -1,6 +1,6 @@
 {
 	"version": 2,
-  "buildCommand": "pnpm run build",
+  "buildCommand": "rpnpm run build",
   "outputDirectory": "www",
   	"version": 2,
   "builds": [
