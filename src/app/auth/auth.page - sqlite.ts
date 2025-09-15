@@ -254,8 +254,7 @@ export class AuthPage implements OnInit {
         for (const u of jsonUsers) {
           await this.sqliteService.addUser(u.id, u.password, u.role, 1, 0, u.name);
         }
-        //console.log('🌱 Seeded default users into SQLite.');
-        console.log('🌱 Seeded default users into Supabase.');
+        console.log('🌱 Seeded default users into SQLite.');
       });
     }
   }

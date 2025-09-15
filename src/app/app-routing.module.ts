@@ -37,6 +37,13 @@ const routes: Routes = [
     loadChildren: () => import('./tab2/tab2.module').then( m =>m.Tab2PageModule )
   },               */
   
+  // 👇 wildcard route — must be last
+  {
+    path: '**',
+    loadChildren: () => import('./auth/auth.module').then( m => m.AuthPageModule)
+   
+  },
+  
 ];
 @NgModule({
   imports: [

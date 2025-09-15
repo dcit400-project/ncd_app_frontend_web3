@@ -88,7 +88,7 @@
     <ion-list>
       <!-- HOME BUTTON -->
       <ion-item button (click)="closeMenu()" class="menu-option">
-        <ion-icon slot="start"></ion-icon>
+        <ion-icon slot="start" name="home"></ion-icon>
         <ion-label>Home</ion-label>
       </ion-item>
 
@@ -119,9 +119,16 @@
 	  
 	  <!-- COMMENTS BUTTON -->
       <ion-item button (click)="commentsShow()" class="menu-option">
-        <ion-icon slot="start"></ion-icon>
+        <ion-icon name="chatbubble" slot="start"></ion-icon>
         <ion-label>Comments</ion-label>
       </ion-item>
+	  
+	  <!-- HISTORY BUTTON -->
+		<ion-item button (click)="showHistory()" class="menu-option">
+		  <ion-icon slot="start" name="time-outline"></ion-icon>
+		  <ion-label>History</ion-label>
+		</ion-item>
+
 
       <!-- LOGOUT BUTTON -->
       <ion-item button (click)="logout()" class="menu-option">

@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 import { IonicModule, ModalController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-commentsPage',
+  selector: 'app-historyPage',
   standalone: true,
   imports: [CommonModule, IonicModule],
   template: `
     <ion-header translucent>
       <ion-toolbar>
-        <ion-title> Comments </ion-title>
+        <ion-title> History </ion-title>
         <ion-buttons slot="end">
           <ion-button fill="clear" color="light" (click)="close()">
             <ion-icon slot="icon-only" name="close-outline"></ion-icon>
@@ -18,31 +18,29 @@ import { IonicModule, ModalController } from '@ionic/angular';
       </ion-toolbar>
     </ion-header>
 
-    <ion-content class="ion-padding commentsPage-content">
-      <ng-container *ngIf="commentsPage && commentsPage.length > 0; else nocommentsPage">
-
-        
-          <ion-card class="commentsPage-card" *ngFor="let c of commentsPage">
+    <ion-content class="ion-padding history-content">
+      <ng-container *ngIf="history && history.length > 0; else nohistory">
+       
+          <ion-card class="history-card" *ngFor="let h of history">
             <ion-card-header>
               <ion-card-title>
-                <p><strong>Doctor:</strong> {{ c.doctor_id }}</p>
+                <p><strong>Disease:</strong> {{ h.condition }}</p>
               </ion-card-title>
               <ion-card-subtitle>
-                {{ c.date | date: 'medium' }}
+                {{ h.date | date: 'medium' }}
               </ion-card-subtitle>
             </ion-card-header>
 
             <ion-card-content>
-              
-              <p><strong>Comment:</strong> {{ c.comment }}</p>
+              <p><strong>Risk Score:</strong> {{ h.risk }}</p>
             </ion-card-content>
           </ion-card>
-        
+       
       </ng-container>
 
-      <ng-template #nocommentsPage>
+      <ng-template #nohistory>
         <ion-text color="medium">
-          <p class="ion-text-center">No comments found for this patient.</p>
+          <p class="ion-text-center">No history records found for this patient.</p>
         </ion-text>
       </ng-template>
 
@@ -52,10 +50,10 @@ import { IonicModule, ModalController } from '@ionic/angular';
     </ion-content>
   `,
   styles: [`
-    .commentsPage-content {
-     
+    .history-content {
+      
     }
-    .commentsPage-card {
+    .history-card {
       border-radius: 16px;
      /* box-shadow: 0 6px 15px rgba(0,0,0,0.1);*/
       margin-bottom: 16px;
@@ -64,7 +62,7 @@ import { IonicModule, ModalController } from '@ionic/angular';
     ion-card-title {
       font-size: 1.2rem;
       font-weight: 600;
-      color: var(--ion-color-primary);
+       color: var(--ion-color-primary);
     }
     ion-card-subtitle {
       font-size: 0.85rem;
@@ -80,10 +78,10 @@ import { IonicModule, ModalController } from '@ionic/angular';
     }
   `]
 })
-export class CommentsPageComponent {
-  @Input() commentsPage: any; // passed in from parent
+export class HistoryPageComponent {
+  @Input() history: any;
 
-  constructor(private modalCtrl: ModalController) {   console.log("Modal received comments:", this.commentsPage); }
+  constructor(private modalCtrl: ModalController) {}
 
   close() {
     this.modalCtrl.dismiss({ refresh: true });

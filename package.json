@@ -1,6 +1,6 @@
 {
   "packageManager": "pnpm@10.8.0",
-  "name": "myApp",
+  "name": "NCD Rick Watcher",
   "version": "0.0.1",
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
@@ -35,6 +35,7 @@
     "@capacitor/preferences": "^7.0.1",
     "@capacitor/toast": "^7.0.2",
     "@ionic/angular": "^8.0.0",
+    "@supabase/supabase-js": "^2.57.4",
     "axios": "^1.11.0",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
@@ -48,14 +49,12 @@
     "node-fetch": "^2.3.2",
     "nodemon": "^3.1.10",
     "openai": "^5.12.2",
-
     "realm-web": "^2.0.1",
     "rxjs": "~7.8.2",
     "sql.js": "1.5.0",
     "stream-browserify": "^3.0.0",
     "swiper": "^11.2.10",
     "tslib": "^2.3.0",
-
     "zone.js": "~0.15.0"
   },
   "devDependencies": {

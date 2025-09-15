@@ -17,9 +17,9 @@ export class Tab1Page implements OnInit{
   diseases = [
     { id: 0, name: 'Hypertension', accuracy: '91' },
     { id: 1, name: 'Arthritis', accuracy: '72' },
-    { id: 2, name: 'Lung_Cancer', accuracy: '100' },
+    { id: 2, name: 'Lung_Cancer', accuracy: '50' },
     { id: 3, name: 'Asthma' , accuracy: '86'},
-    { id: 4, name: 'Diabetes' , accuracy: '97'},
+    { id: 4, name: 'Diabetes' , accuracy: '90'},
   ];
   activeDisease: number | null = null;
 
@@ -28,6 +28,7 @@ export class Tab1Page implements OnInit{
   }
 
 
+//-------online--addresses
  //host_address = 'http://192.168.255.194:8000'
  host_address = ''
  host_address_tts = 'https://ncdttspaystack.netlify.app'
@@ -36,6 +37,7 @@ export class Tab1Page implements OnInit{
  host_address_parse = 'https://tk6t2l4oxg951-flask--5000.prod1.defang.dev/'
 
 
+//-------offline--addresses
 /*
 
 host_address_tabnet = 'http://192.168.192.194:8000'
@@ -84,7 +86,7 @@ host_address_tts = 'http://localhost:3000'
     {
       title: 'Clinical Measurements',
       fields: [
-        { key: 'totChol', label: 'What is your total Cholesterol (in milligrams per deciliter)', type: 'number' },
+        { key: 'totChol', label: 'What is your total Cholesterol (in milligrams per deciliter)?', type: 'number' },
         { key: 'sysBP', label: 'What is your systolic blood pressure (in millimeters)?', type: 'number' },
         { key: 'diaBP', label: 'What is your diastolic blood pressure (in millimeters)?', type: 'number' },
         { key: 'BMI', label: 'What is your body mass index (your BMI)?', type: 'number' },
@@ -102,7 +104,7 @@ host_address_tts = 'http://localhost:3000'
       title: 'Demographics',
       fields: [
         {
-          key: 'Sex', label: 'What is your Gender? Are you a Male or Female?', type: 'select', options: ['Male', 'Female'], map: { Male: 1, Female: 0 }
+          key: 'Sex', label: 'What is your Gender? Are you a Male or Female.', type: 'select', options: ['Male', 'Female'], map: { Male: 1, Female: 0 }
         },
         {
           key: 'Age_Category',label: 'How old are you?',type: 'select',options: [
@@ -156,7 +158,7 @@ host_address_tts = 'http://localhost:3000'
       title: 'Medical History',
       fields: [
         {
-          key: 'Diabetes', label: 'Are you diagnosed with diabetes? What is your diabetes status? ', type: 'select', 
+          key: 'Diabetes', label: 'Are you diagnosed with diabetes? What is your diabetes status. ', type: 'select', 
 		  options: ['Yes', 'No', 'pre-diabetic', 'only during pregnancy'], 
 		  map: { 'Yes': 3, 'No': 0, 'pre-diabetic': 1, 'only during pregnancy': 2 }
         },
@@ -299,7 +301,7 @@ host_address_tts = 'http://localhost:3000'
 		  { key: 'Age', label: 'What is your age?', type: 'number' },
 		  {
 			key: 'Gender',
-			label: 'What is your Gender?',
+			label: 'What is your gender?',
 			type: 'select',
 			options: ['Male', 'Female'],
 			map: { Male: 1, Female: 2 }
@@ -362,7 +364,7 @@ host_address_tts = 'http://localhost:3000'
 		  },
 		  {
 			key: 'Second_Hand_Smoke',
-			label: 'Are you exposed to second-hand smoke?',
+			label: 'Are you exposed to second-hand smoke? Such as the smoke from burning tobacco products.',
 			type: 'select',
 			options: ['No', 'Yes'],
 			map: { No: 0, Yes: 1 }
@@ -401,10 +403,10 @@ host_address_tts = 'http://localhost:3000'
     {
       title: 'Demographics',
       fields: [
-        { key: 'Sex', label: 'What is your gender? Male or female.', type: 'select', options: ['Male', 'Female'], map: { Male: 1, Female: 0 } },
+        { key: 'Sex', label: 'What is your gender? Male or Female.', type: 'select', options: ['Male', 'Female'], map: { Male: 1, Female: 0 } },
         {
           key: 'RaceEthnicityCategory',
-          label: 'What is your race or your ethnicity? Are you black, white, hispanic, non-hispanic, or another race?',
+          label: 'Which race are you? Are you black, white, hispanic, non-hispanic, or some other race?',
           type: 'select',
           options: [
             'Multiracial, Non-Hispanic',
@@ -592,8 +594,8 @@ host_address_tts = 'http://localhost:3000'
     {
       title: 'Demographics',
       fields: [
-        { key: 'gender', label: 'What is your Gender?', type: 'select', options: ['Male', 'Female'], map: { 'Male': 1, 'Female': 0 } },
-        { key: 'age', label: 'What is your Age?', type: 'number' }
+        { key: 'gender', label: 'What is your gender?', type: 'select', options: ['Male', 'Female'], map: { 'Male': 1, 'Female': 0 } },
+        { key: 'age', label: 'What is your age?', type: 'number' }
       ]
     },
     {
@@ -1230,7 +1232,7 @@ host_address_tts = 'http://localhost:3000'
 			if (!this.voiceUIActive) return; this.loadingCtrl.dismiss();
 			if (this.currentQuestionIndex >= this.questions.length) return;
 			const q = this.questions[this.currentQuestionIndex].question;
-			this.zone.run(() => { this.statusMessage = 'Asking: ' + q; this.micState = 'idle'; });
+			this.zone.run(() => { this.statusMessage = 'Question: ' + q; this.micState = 'idle'; });
 			
 			try {
 				//await this.speakWithOpenAI(q);
@@ -1407,7 +1409,7 @@ host_address_tts = 'http://localhost:3000'
 		this.paymentUseCount = user?.paymentUseCount || 0;  // Use ?? false to default
 		
 		if(this.userRole === 'Patient')
-			this.showToast2('Logged In Successfully As: ' + this.introSeen, 'success');
+			this.showToast2('Logged In Successfully As: ' + this.username, 'success');
 		console.log("paymentUseCount : " + this.paymentUseCount);
 		this.payment_balance = this.sqliteService.getPaymentBalanceById(this.username);
 		
@@ -1650,6 +1652,35 @@ host_address_tts = 'http://localhost:3000'
 	}
 	
 	
+	//------------------History----------------------
+	
+		
+	async showHistory() {
+	  try {
+		const raw = await this.sqliteService.loadHistoryByPatientId(this.username);
+
+		const history: PatientHistory[] = raw.map((h: any) => ({
+		  user_id: h.user_id,
+		  condition: h.condition,
+		  risk: h.risk,
+		  date: h.date
+		}));
+
+		console.log("Fetched history:", history);
+
+		const modal = await this.modalCtrl.create({
+		  component: HistoryPageComponent,
+		  componentProps: { history }
+		});
+
+		await modal.present();
+	  } catch (err) {
+		this.showError2('History Error: ' + err);
+		console.error("Error loading history", err);
+	  }
+	}
+	
+	
 	
 
 }
@@ -1673,7 +1704,14 @@ interface PatientComment {
 }
 
 
+import { HistoryPageComponent } from './history';
 
+interface PatientHistory {
+  user_id: string;
+  condition: string;
+  risk: number;
+  date: string;
+}
 
 
  

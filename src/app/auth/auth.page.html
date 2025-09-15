@@ -13,10 +13,20 @@
     <h2>{{ authMode === 'login' ? 'Welcome' : 'Create an Account' }}</h2>
 
     <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
-      <ion-item>
-        <ion-icon name="person-outline" slot="start"></ion-icon>
-        <ion-input placeholder="ID" formControlName="id"></ion-input>
-      </ion-item>
+	
+	<div *ngIf="authMode === 'login'">
+		  <ion-item>
+			<ion-icon name="person-outline" slot="start"></ion-icon>
+			<ion-input placeholder="ID" formControlName="id"></ion-input>
+		  </ion-item>
+	  </div>
+	  
+	  <div *ngIf="authMode === 'signup'">
+		  <ion-item>
+			<ion-icon name="person-outline" slot="start"></ion-icon>
+			<ion-input placeholder="Name" formControlName="name"></ion-input>
+		  </ion-item>
+	  </div>
 
       <ion-item>
         <ion-icon name="lock-closed-outline" slot="start"></ion-icon>

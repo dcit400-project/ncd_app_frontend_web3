@@ -11,10 +11,8 @@ export async function seedDatabase(sqliteService: SQLiteService) {
   if (users.length === 0) {
     console.log('🌱 Adding dummy users...');
     // 2 doctors
-    await sqliteService.addUser('D101', 'pass123', 'Doctor', 1, 0, 'testuser');
-    await sqliteService.addUser('D102', 'pass123', 'Doctor', 1, 0, 'testuser');
-    await sqliteService.addUser('D103', 'pass123', 'Doctor', 1, 0, 'testuser');
-    await sqliteService.addUser('D105', 'pass123', 'Doctor', 1, 0, 'testuser');
+    await sqliteService.addUser('D1001', 'pass123', 'Doctor', 1, 0, 'testuser');
+    await sqliteService.addUser('D1002', 'pass123', 'Doctor', 1, 0, 'testuser');
 
     // 7 patients
     for (let i = 1; i <= 7; i++) {
@@ -150,20 +148,20 @@ export async function seedDatabase(sqliteService: SQLiteService) {
     const methods = ['Card', 'Bank Transfer', 'Mobile Money'];
     const statuses = ['success', 'failed', 'pending'];
 
-	await sqliteService.addPaymentRecord(150.00, '2025-08-15T10:30:00Z', 'success', 'Card', 'P101');
-	  await sqliteService.addPaymentRecord(75.50, '2025-08-14T11:00:00Z', 'failed', 'Bank Transfer', 'P101');
-	  await sqliteService.addPaymentRecord(120.75, '2025-08-13T09:45:00Z', 'success', 'Mobile Money', 'P102');
-	  await sqliteService.addPaymentRecord(200.00, '2025-08-12T14:20:00Z', 'pending', 'Card', 'P102');
-	  await sqliteService.addPaymentRecord(180.25, '2025-08-11T16:15:00Z', 'success', 'Bank Transfer', 'P104');
-	  await sqliteService.addPaymentRecord(95.00, '2025-08-10T12:50:00Z', 'failed', 'Mobile Money', 'P105');
-	  await sqliteService.addPaymentRecord(140.00, '2025-08-09T08:30:00Z', 'success', 'Card', 'P101');
+	await sqliteService.addPaymentRecord(150.00, '2025-08-15T10:30:00Z', 'success', 'Card', '1');
+	  await sqliteService.addPaymentRecord(75.50, '2025-08-14T11:00:00Z', 'failed', 'Bank Transfer', '1');
+	  await sqliteService.addPaymentRecord(120.75, '2025-08-13T09:45:00Z', 'success', 'Mobile Money', '2');
+	  await sqliteService.addPaymentRecord(200.00, '2025-08-12T14:20:00Z', 'pending', 'Card', '2');
+	  await sqliteService.addPaymentRecord(180.25, '2025-08-11T16:15:00Z', 'success', 'Bank Transfer', '4');
+	  await sqliteService.addPaymentRecord(95.00, '2025-08-10T12:50:00Z', 'failed', 'Mobile Money', '5');
+	  await sqliteService.addPaymentRecord(140.00, '2025-08-09T08:30:00Z', 'success', 'Card', '1');
 
     for (let i = 1; i <= 7; i++) {
       const amount = Number((Math.random() * 200 + 50).toFixed(2)); // random amount 50–250
       const date = new Date(Date.now() - i * 86400000).toISOString(); // past i days
       const status = statuses[i % statuses.length];
       const method = methods[i % methods.length];
-      const user_id = `P10${i}`;
+      const user_id = `10${i}`;
 
       await sqliteService.addPaymentRecord(amount, date, status, method, user_id);
     }
@@ -177,8 +175,8 @@ export async function seedDatabase(sqliteService: SQLiteService) {
   await sqliteService.saveComments("D102", "Increase physical activity","Cholesterol still high",  "P103", "Cardiovascular", "2025-08-04");
 
   // Optional: add more comments for variety
-  await sqliteService.saveComments("D101", "Follow-up scheduled", "Review in 2 weeks", "P101", "Hypertension", "2025-08-15");
-  await sqliteService.saveComments("D103", "Patient reports no side effects", "Continue current dose", "P104", "Diabetes", "2025-08-10");
+  await sqliteService.saveComments("101", "Follow-up scheduled", "Review in 2 weeks", "P101", "Hypertension", "2025-08-15");
+  await sqliteService.saveComments("103", "Patient reports no side effects", "Continue current dose", "P104", "Diabetes", "2025-08-10");
 
   console.log('✅ Seeding complete');
 }

@@ -6,6 +6,8 @@ export interface User {
   role: string;
   introSeen: number;
   paymentUseCount: number;
+  name: string;
+
 }
 
 @Injectable({ providedIn: 'root' })
