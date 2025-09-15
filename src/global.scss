@@ -34,3 +34,6 @@ body.dark {
     --custom-button-radius: 12px ;    --section-title-background: var(--ion-color-primary) ;    --section-title-color: var(--ion-text-color); // or var(--ion-color-dark)
   }
   
+html {
+  font-size: 12px; /* default ~16px */
+}
