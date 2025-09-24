@@ -1,3 +1,5 @@
+//patient page(tab 1)
+
 import { Component, NgZone, OnInit } from '@angular/core'; 
 import { AlertController, } from '@ionic/angular'; import { HttpClient } from '@angular/common/http';
 import { SpeechRecognition } from '@capacitor-community/speech-recognition';
