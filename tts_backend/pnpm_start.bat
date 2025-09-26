@@ -1,1 +1,0 @@
-start cmd /k "pnpm nodemon tts_backend/server.js"
