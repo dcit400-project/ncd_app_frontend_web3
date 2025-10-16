@@ -1117,7 +1117,7 @@ host_address_tts = 'http://localhost:3000'
 			if (!this.voiceUIActive) return; this.loadingCtrl.dismiss();
 			if (this.currentQuestionIndex >= this.questions.length) return;
 			const q = this.questions[this.currentQuestionIndex].question;
-			this.zone.run(() => { this.statusMessage = 'Question: ' + q; this.micState = 'idle'; });
+			this.zone.run(() => { this.statusMessage = '' + q; this.micState = 'idle'; });
 			
 			try {
 				//await this.speakWithOpenAI(q);
