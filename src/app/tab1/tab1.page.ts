@@ -36,8 +36,8 @@ export class Tab1Page implements OnInit{
 	host_address = ''
 	host_address_tts = 'https://ncdttspaystack.netlify.app'
   
-	host_address_tabnet = 'https://ncdappmodelstensor-torch-production.up.railway.app'
-	//host_address_tabnet = 'https://ncd-app-models-tensor-torch-1.onrender.com'
+	//host_address_tabnet = 'https://ncdappmodelstensor-torch-production.up.railway.app'
+	host_address_tabnet = 'https://ncd-app-models-tensor-torch-1.onrender.com'
 
 	// host_address_tensorflow = 'https://ncd400-api-production-74ef.up.railway.app'
 	host_address_tensorflow = 'https://ncd400-api-production.up.railway.app' //renewed
