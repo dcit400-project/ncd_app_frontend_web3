@@ -57,11 +57,11 @@
     stroke-width: 3;
     stroke-linecap: round;
     stroke-dasharray: 65, 100;
-    animation: spinPie 3s linear infinite;
+    animation: spinPie 3s linear forwards;
   }
   @keyframes spinPie {
     0%   { stroke-dasharray: 0, 100; }
-    50%  { stroke-dasharray: 65, 100; }
-    100% { stroke-dasharray: 0, 100; }
+    50%  { stroke-dasharray: 50, 100; }
+    100% { stroke-dasharray: 65, 100; }
   }
   
