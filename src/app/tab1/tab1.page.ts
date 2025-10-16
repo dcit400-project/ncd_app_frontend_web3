@@ -34,14 +34,14 @@ export class Tab1Page implements OnInit{
 //-------online--addresses
 	 //host_address = 'http://192.168.255.194:8000'
 	host_address = ''
-	host_address_tts = 'https://ncdttspaystack.netlify.app'
+	host_address_tts = 'https://ncdttspaystack.netlify.app'								//link to async.ai(voice api) 
   
-	//host_address_tabnet = 'https://ncdappmodelstensor-torch-production.up.railway.app'
-	host_address_tabnet = 'https://ncd-app-models-tensor-torch-1.onrender.com'
+	host_address_tabnet = 'https://ncdappmodelstensor-torch-production.up.railway.app' 	//link to onnx models
+	//host_address_tabnet = 'https://ncd-app-models-tensor-torch-1.onrender.com'  		//link to pytorch models
 
 	// host_address_tensorflow = 'https://ncd400-api-production-74ef.up.railway.app'
-	host_address_tensorflow = 'https://ncd400-api-production.up.railway.app' //renewed
-	host_address_parse = 'https://tk6t2l4oxg951-flask--5000.prod1.defang.dev/'
+	host_address_tensorflow = 'https://ncd400-api-production.up.railway.app' 			//renewed link to onnx models
+	host_address_parse = 'https://tk6t2l4oxg951-flask--5000.prod1.defang.dev/'         	//link to transformer models
 
 
 //-------offline--addresses
@@ -179,128 +179,6 @@ host_address_tts = 'http://localhost:3000'
     }
   ];
   
-  
-  
-  /*
-  private lungCancerFields: { title: string; fields: Field[] }[] = [
-    {
-      title: 'Demographics',
-      fields: [
-        { key: 'Age', label: 'What Is Your Age?', type: 'number' },
-        { key: 'Gender', label: 'What Is Your Gender?', type: 'select', options: ['Male', 'Female'], map: { Male: 1, Female: 2 } }
-      ]
-    },
-    {
-      title: 'Lifestyle',
-      fields: [
-        { key: 'Air_Pollution', label: 'Are You Exposed To Air Pollution? Rate your situation', type: 'select', 
-		options: ['Never', 'Rarely', 'Occasionally', 'Sometimes', 'Often', 'Usually', 'Almost always', 'Always'], 
-		map: {'Never':1, 'Rarely':2, 'Occasionally':3, 'Sometimes':4, 'Often':5, 'Usually':6, 'Almost always':7, 'Always':8} 
-		},
-        { key: 'Alcohol_use', label: 'What Is Your Alcohol use?', type: 'select', 
-		options: ['Never', 'Rarely', 'Occasionally', 'Sometimes', 'Often', 'Usually', 'Almost always', 'Always'], 
-		map: {'Never':1, 'Rarely':2, 'Occasionally':3, 'Sometimes':4, 'Often':5, 'Usually':6, 'Almost always':7, 'Always':8} 
-		},
-        { key: 'Dust_Allergy', label: 'Do You Have Any Dust allergy?', type: 'select', 
-		options: ['Never', 'Rarely', 'Occasionally', 'Sometimes', 'Often', 'Usually', 'Almost always', 'Always'], 
-		map: {'Never':1, 'Rarely':2, 'Occasionally':3, 'Sometimes':4, 'Often':5, 'Usually':6, 'Almost always':7, 'Always':8} 
-		},
-        { key: 'OccuPational_Hazards', label: 'Are you exposed to any Occupational hazards?', type: 'select', 
-		options: ['Never', 'Rarely', 'Occasionally', 'Sometimes', 'Often', 'Usually', 'Almost always', 'Always'], 
-		map: {'Never':1, 'Rarely':2, 'Occasionally':3, 'Sometimes':4, 'Often':5, 'Usually':6, 'Almost always':7, 'Always':8} 
-		},
-		
-        { key: 'Genetic_Risk', label: 'Do You Have Any Genetic risk?', type: 'select', 
-		options: ['Never', 'Rarely', 'Sometimes', 'Often', 'Usually', 'Almost always', 'Always'], 
-		map: {'Never':1, 'Rarely':2, 'Sometimes':3, 'Often':4, 'Usually':5, 'Almost always':6, 'Always':7} 
-		},
-        { key: 'Balanced_Diet', label: 'Do You Follow A balanced diet?', type: 'select', 
-		options: ['Never', 'Rarely', 'Sometimes', 'Often', 'Usually', 'Almost always', 'Always'], 
-		map: {'Never':1, 'Rarely':2, 'Sometimes':3, 'Often':4, 'Usually':5, 'Almost always':6, 'Always':7} 
-		},
-        { key: 'Obesity', label: 'Is Obesity Present In You?', type: 'select', 
-		options: ['Never', 'Rarely', 'Sometimes', 'Often', 'Usually', 'Almost always', 'Always'], 
-		map: {'Never':1, 'Rarely':2, 'Sometimes':3, 'Often':4, 'Usually':5, 'Almost always':6, 'Always':7}  
-		},
-		
-        { key: 'Smoking', label: 'Are You A Smoker?', type: 'select', 
-		options: ['Never', 'Rarely', 'Occasionally', 'Sometimes', 'Often', 'Usually', 'Almost always', 'Always'], 
-		map: {'Never':1, 'Rarely':2, 'Occasionally':3, 'Sometimes':4, 'Often':5, 'Usually':6, 'Almost always':7, 'Always':8}  
-		},
-        { key: 'Passive_Smoker', label: 'Are You A Passive smoker?', type: 'select', 
-		options: ['Never', 'Rarely', 'Occasionally', 'Sometimes', 'Often', 'Usually', 'Almost always', 'Always'], 
-		map: {'Never':1, 'Rarely':2, 'Occasionally':3, 'Sometimes':4, 'Often':5, 'Usually':6, 'Almost always':7, 'Always':8} 
-		}
-      ]
-    },
-    {
-      title: 'Medical History',
-      fields: [
-        { key: 'chronic_Lung_Disease', label: 'Do You Have Chronic lung disease?', type: 'select', 
-		options: ['Never', 'Rarely', 'Sometimes', 'Often', 'Usually', 'Almost always', 'Always'], 
-		map: {'Never':1, 'Rarely':2, 'Sometimes':3, 'Often':4, 'Usually':5, 'Almost always':6, 'Always':7}
-		}
-      ]
-    },
-    {
-      title: 'Symptoms',
-      fields: [
-        { key: 'Chest_Pain', label: 'Do You Have Chest pain?', type: 'select', 
-		options: ['Never', 'Almost never', 'Rarely', 'Occasionally', 'Sometimes', 'Often', 'Usually', 'Almost always', 'Always'], 
-		map: {'Never':1, 'Almost never':2,'Rarely':3, 'Occasionally':4, 'Sometimes':5, 'Often':6, 'Usually':7, 'Almost always':8, 'Always':9} 
-		},
-        { key: 'Coughing_of_Blood', label: 'Do You Cough blood?', type: 'select', 
-		options: ['Never', 'Almost never', 'Rarely', 'Occasionally', 'Sometimes', 'Often', 'Usually', 'Almost always', 'Always'], 
-		map: {'Never':1, 'Almost never':2,'Rarely':3, 'Occasionally':4, 'Sometimes':5, 'Often':6, 'Usually':7, 'Almost always':8, 'Always':9} 
-		},
-        { key: 'Fatigue', label: 'Do You Have Fatigue?', type: 'select', 
-		options: ['Never', 'Almost never', 'Rarely', 'Occasionally', 'Sometimes', 'Often', 'Usually', 'Almost always', 'Always'], 
-		map: {'Never':1, 'Almost never':2,'Rarely':3, 'Occasionally':4, 'Sometimes':5, 'Often':6, 'Usually':7, 'Almost always':8, 'Always':9} 
-
-		},
-		
-        { key: 'Weight_Loss', label: 'Do You Have Unexplained weight loss?', type: 'select', 
-		options: ['Never', 'Rarely', 'Occasionally', 'Sometimes', 'Often', 'Usually', 'Almost always', 'Always'], 
-		map: {'Never':1, 'Rarely':2, 'Occasionally':3, 'Sometimes':4, 'Often':5, 'Usually':6, 'Almost always':7, 'Always':8} 
-		},
-		
-        { key: 'Shortness_of_Breath', label: 'Do You Have Shortness of breath?', type: 'select', 
-		options: ['Never', 'Almost never', 'Rarely', 'Occasionally', 'Sometimes', 'Often', 'Usually', 'Almost always', 'Always'], 
-		map: {'Never':1, 'Almost never':2,'Rarely':3, 'Occasionally':4, 'Sometimes':5, 'Often':6, 'Usually':7, 'Almost always':8, 'Always':9} 
-		},
-		
-        { key: 'Wheezing', label: 'Do You Wheeze?', type: 'select', 
-		options: ['Never', 'Rarely', 'Occasionally', 'Sometimes', 'Often', 'Usually', 'Almost always', 'Always'], 
-		map: {'Never':1, 'Rarely':2, 'Occasionally':3, 'Sometimes':4, 'Often':5, 'Usually':6, 'Almost always':7, 'Always':8} 
-		},
-        { key: 'Swallowing_Difficulty', label: 'Do You Have Swallowing difficulty?', type: 'select', 
-		options: ['Never', 'Rarely', 'Occasionally', 'Sometimes', 'Often', 'Usually', 'Almost always', 'Always'], 
-		map: {'Never':1, 'Rarely':2, 'Occasionally':3, 'Sometimes':4, 'Often':5, 'Usually':6, 'Almost always':7, 'Always':8} 
-		},
-		
-        { key: 'Clubbing_of_Finger_Nails', label: 'Do You Have Clubbing of nails?', type: 'select', 
-		options: ['Never', 'Almost never', 'Rarely', 'Occasionally', 'Sometimes', 'Often', 'Usually', 'Almost always', 'Always'], 
-		map: {'Never':1, 'Almost never':2,'Rarely':3, 'Occasionally':4, 'Sometimes':5, 'Often':6, 'Usually':7, 'Almost always':8, 'Always':9} 
-		},
-		
-        { key: 'Frequent_Cold', label: 'Do You Get Frequent colds?', type: 'select', 
-		options: ['Never', 'Rarely', 'Sometimes', 'Often', 'Usually', 'Almost always', 'Always'], 
-		map: {'Never':1, 'Rarely':2, 'Sometimes':3, 'Often':4, 'Usually':5, 'Almost always':6, 'Always':7} 
-		},
-        { key: 'Dry_Cough', label: 'Do You Have Dry cough?', type: 'select', 
-		options: ['Never', 'Rarely', 'Sometimes', 'Often', 'Usually', 'Almost always', 'Always'], 
-		map: {'Never':1, 'Rarely':2, 'Sometimes':3, 'Often':4, 'Usually':5, 'Almost always':6, 'Always':7} 
-		},
-        { key: 'Snoring', label: 'Do You Snore?', type: 'select', 
-		options: ['Never', 'Rarely', 'Sometimes', 'Often', 'Usually', 'Almost always', 'Always'], 
-		map: {'Never':1, 'Rarely':2, 'Sometimes':3, 'Often':4, 'Usually':5, 'Almost always':6, 'Always':7} 
-		}
-      ]
-    }
-  ];
-  
-  */
-  
 	private lungCancerFields: { title: string; fields: Field[] }[] = [
 	  {
 		title: 'Demographics',
@@ -410,7 +288,7 @@ host_address_tts = 'http://localhost:3000'
     {
       title: 'Demographics',
       fields: [
-        { key: 'Sex', label: 'What is your gender? Male or Female.', type: 'select', options: ['Male', 'Female'], map: { Male: 1, Female: 0 } },
+        { key: 'Sex', label: 'What is your gender? Male or Female', type: 'select', options: ['Male', 'Female'], map: { Male: 1, Female: 0 } },
         {
           key: 'RaceEthnicityCategory',
           label: 'Which race are you? Are you black, white, hispanic, non-hispanic, or some other race?',
